@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import './Login.css'
 
-import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../../../../modulos/bootstrap/dist/css/bootstrap.min.css';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faEnvelope, faKey} from "@fortawesome/free-solid-svg-icons";
