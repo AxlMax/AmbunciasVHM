@@ -4,7 +4,7 @@ function Map() {
     const mapStyles = {        
         margin: "2em",
         height: "80vh",
-        width: "95%",
+        width: "98%",
         borderRadius: "2em"
     };
     

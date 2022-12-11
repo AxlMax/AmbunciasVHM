@@ -9,7 +9,7 @@
     font-size: 16px;
     
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: 0.5fr repeat(4, 1fr);
     grid-template-rows: 0.5fr repeat(4, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
@@ -19,14 +19,27 @@
     grid-area: 1 / 1 / 6 / 2;
     background-color: whitesmoke;
     width:18.75em;
-    min-height: 80vh;
     margin: 1.25rem;
     border-radius: 3.125rem;
     align-items: center;
 }
 
+
+.SideBarHide{
+    display: None;
+}
+
 .info {
     grid-area: 1 / 2 / 2 / 6;
+    background-color: whitesmoke;
+    margin: 1.25rem;
+    height: 10vh;
+    border-radius: 3.125rem;
+    align-items: center;
+}
+
+.Biginfo{
+    grid-area: 1 / 1 / 2 / 6;
     background-color: whitesmoke;
     margin: 1.25rem;
     height: 10vh;

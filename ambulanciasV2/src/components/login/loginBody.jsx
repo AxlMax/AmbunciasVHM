@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faEnvelope, faKey} from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
-import { useDispatch } from 'react-redux'
-import {OauthSlice} from '../../storage/features/login/loginSlice'
+import { useDispatch } from 'react-redux';
+import {OauthSlice} from '../../storage/features/login/loginSlice';
 
 import Oauth from "../../services/login"
 
