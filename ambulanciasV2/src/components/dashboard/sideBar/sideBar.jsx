@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faTruckMedical} from "@fortawesome/free-solid-svg-icons";
+import { faHospital } from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { faCar } from "@fortawesome/free-solid-svg-icons";
+
+import SideBarIcon from "./sideBarIcon";
 
 function SideBar() {
 
@@ -24,15 +28,12 @@ function SideBar() {
 
         <div className = "img">
             <img src="/logovhm.png" class="img-fluid2"/>
-            <hr></hr>
+            <hr/>
+            <SideBarIcon label = {"ambulancias"} icon = {faTruckMedical}/>
+            <SideBarIcon label = {"Hopitales"} icon = {faHospital}/>
+            <SideBarIcon label = {"Gps"} icon = {faLocationDot}/>
+            <SideBarIcon label = {"Conductores"} icon = {faCar}/>
         </div>
-
-        <div className= "ContainerBoton">
-            <button className = "boton">
-            <FontAwesomeIcon icon={faTruckMedical} className = "m-1"/>
-                Ambulancias
-            </button>
-        </div>   
     </div>
 
     );

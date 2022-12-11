@@ -57,7 +57,7 @@ function LoginBody(props) {
                     </div>
                 </div>
                 <div class="col">
-                <Form className = "p-sm-3" onSubmit={handleSubmit(onSubmit)}>
+                <Form className = "p-sm-4" onSubmit={handleSubmit(onSubmit)}>
     
                     <div className="containerInput">
                         <div class = {rEmail}>

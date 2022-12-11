@@ -2,14 +2,14 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 
-import SideBar from "./sideBar";
+import SideBar from "./sideBar/sideBar";
 import Map from "./map";
 import Info from "./info/info";
 
 import "./dashboard.css"
 
 function Dashboard() {
-    
+
     const navigateTo = useNavigate()
     const {value} = useSelector((state) => state.login)
 
@@ -21,13 +21,12 @@ function Dashboard() {
 
     return (
     <div className = "Dashboard">
-       
        <Info/>
        <SideBar/>
-
-        <div className="space">
+       <div className = {"space"}>
             <Map/>
-        </div>
+       </div>
+        
     </div>
     );
 }

@@ -13,14 +13,14 @@ function Map() {
     }
 
     return <>
-    <LoadScript
-       googleMapsApiKey='AIzaSyC-M5uwjxfOmKFYXjwKVpxBdAsY3Bv1LbQ'>
-        <GoogleMap
-          mapContainerStyle={mapStyles}
-          zoom={13}
-          center={defaultCenter}
-        />
-     </LoadScript>
+        <LoadScript
+        googleMapsApiKey='AIzaSyC-M5uwjxfOmKFYXjwKVpxBdAsY3Bv1LbQ'>
+            <GoogleMap
+            mapContainerStyle={mapStyles}
+            zoom={13}
+            center={defaultCenter}
+            />
+        </LoadScript>
     </>;
 }
 
