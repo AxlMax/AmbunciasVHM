@@ -1,0 +1,259 @@
+.Dashboard {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #e0e0e0;
+}
+.Dashboard .contSlider{
+    width: 6%;
+    height: 90%;
+    background-color: #8293EB;
+    border-radius: 15px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+
+    box-shadow:  8px 8px 16px #9b9b9b,
+             -8px -8px 16px #ffffff;
+    opacity: 80%;
+    transition: all 0.2s;
+}
+.Dashboard .contSlider:hover{
+    opacity: 100%;
+    box-shadow:  9px 9px 7px #9b9b9b,
+             -9px -9px 7px #ffffff;
+}
+.Dashboard .contSlider .contLog{
+    
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Dashboard .contSlider .contLog .icon{
+    width: 30px;
+    height: 30px;
+    margin: 20px;
+    transition: all 0.2s;
+    color: rgba(243, 2, 2, 0.534);
+}
+.Dashboard .contSlider .contLog .icon:hover{
+    color: black;
+    cursor: pointer;
+}
+.Dashboard .contSlider .contBody{
+    width: 100%;
+    height: 80%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.Dashboard .contSlider .contBody .icon{
+    width: 30px;
+    height: 30px;
+    margin: 20px;
+    color: white;
+    transition: all 0.2s;
+}
+.Dashboard .contSlider .contBody  .config:hover{
+    transform: rotate(90deg);
+}
+.Dashboard .contSlider .contBody .icon:hover{
+    color: black;
+    cursor: pointer;
+}
+.Dashboard .contBody{
+    width: 90%;
+    height: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.Dashboard .contBody .contElements{
+    width: 80%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.Dashboard .contBody .contElements .contInfo{
+    width: 90%;
+    height: 10%;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.Dashboard .contBody .contElements .contInfo .contBody{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.Dashboard .contBody .contElements .contInfo .contBody .Element{
+    width: 100px;
+    height: 100px;
+
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.753);
+    box-shadow:  5px 5px 10px #b3b3b3;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.Dashboard .contBody .contElements .contInfo .contBody .Element:hover{
+    height: 70px;
+}
+.Dashboard .contBody .contElements .contInfo .contBody .Element .contDesc{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Dashboard .contBody .contElements .contInfo .contBody .Element .contDesc p{
+    text-align: center;
+    margin: 0 auto;
+}
+.Dashboard .contBody .contElements .contInfo .contBody .Element img{
+    width: 30%;
+    height: 100%;
+}
+.Dashboard .contBody .contElements .contInfo .contBody .Element .contState{
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    
+}
+.Dashboard .contBody .contElements .contInfo .contBody .Element .true{
+    color: rgba(0, 128, 0, 0.548);
+    
+}
+.Dashboard .contBody .contElements .contInfo .contBody .Element .false{
+   color: rgba(255, 0, 0, 0.452);
+   
+}
+.Dashboard .contBody .contElements .contInfo .icon{
+    width: 20px;
+    height: 20px;
+}
+.Dashboard .contBody .contHeader{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    margin-top: 20px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.Dashboard .contBody .contHeader .contTitleIcon{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+}
+.Dashboard .contBody .contHeader .contTitleIcon p{
+    margin: 0 auto;
+    text-align: center;
+}
+.Dashboard .contBody .contHeader .contTitleIcon .icon{
+    width: 30px;
+    height: 30px;
+}
+.Dashboard .contBody .contHeader .contPerfil{
+    width: 30%;
+    height: 100%;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.Dashboard .contBody .contHeader .contPerfil .Perfil{
+    width: 30%;
+    height: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Dashboard .contBody .contHeader .contPerfil .Perfil img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: rgb(94, 94, 94);
+}
+.Dashboard .contBody .contMap{
+    width: 800px;
+    height: 350px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow:  8px 8px 16px #9b9b9b,
+    -8px -8px 16px #ffffff;
+}
+.Dashboard .contCustom{
+    width: 300px;
+    height: 50px;
+    border-radius: 15px;
+    background-color: #ffffff;
+    box-shadow:  5px 5px 10px #b3b3b3,
+                -5px -5px 10px #ffffff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    transition: all 0.2s;
+}
+.Dashboard .contCustom:hover{
+    width: 320px;
+}
+.Dashboard .contCustom .contBtn{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.Dashboard .contCustom .contBtn .icon{
+    width: 50%;
+    height: 50%;
+    color: #8293EB;
+    transition: all 0.2s;
+}
+.Dashboard .contCustom .contBtn:hover .icon{
+   transform: translateY(-10px);
+    
+}

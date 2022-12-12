@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
-import { Change } from "../../storage/features/showSidebar/showSidebarSlice";
+import { Change } from "../storage/features/showSidebar/showSidebarSlice";
 
 function Info() {
 

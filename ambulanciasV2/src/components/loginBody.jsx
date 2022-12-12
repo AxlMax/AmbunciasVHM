@@ -6,9 +6,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faEnvelope, faKey} from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
 import { useDispatch } from 'react-redux';
-import {OauthSlice} from '../../storage/features/login/loginSlice';
+import {OauthSlice} from '../storage/features/login/loginSlice';
 
-import Oauth from "../../services/login"
+import Oauth from "../services/login"
 
 function LoginBody(props) {
 
@@ -50,6 +50,7 @@ function LoginBody(props) {
 
     return <>
         <div class="container">
+            
             <div class="row g-1">
                 <div class="col">
                     <div className = "image">
@@ -89,6 +90,9 @@ function LoginBody(props) {
                     </div>
                 </Form>
                 </div>
+            </div>
+            <div className='contEffet'>
+
             </div>
         </div>
     </>;

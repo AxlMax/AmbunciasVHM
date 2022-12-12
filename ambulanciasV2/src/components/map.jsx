@@ -2,10 +2,10 @@ import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
 function Map() {
     const mapStyles = {        
-        margin: "2em",
-        height: "80vh",
-        width: "98%",
-        borderRadius: "2em"
+        margin: "0",
+        height: "100%",
+        width: "100%",
+        borderRadius: "0"
     };
     
     const defaultCenter = {

@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import LoginBody from './loginBody';
-import WaitPage from '../waitPage/waitPage';
+import { useState } from 'react'
+import LoginBody from '../components/loginBody'
+import WaitPage from './waitPage'
 
-import './Login.css';
+import '../css/Login.css';
 
 function Login() {
     

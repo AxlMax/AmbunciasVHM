@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom"
 
-import Login from './components/login/login'
-import NoFound from './components/noFound/noFound';
-import Dashboard from './components/dashboard/dashboard';
+import Login from './page/login'
+import NoFound from './page/noFound';
+import Dashboard from './page/dashboard';
 import Testing from "./components/testing/testing";
 
 import 'bootstrap/dist/css/bootstrap.min.css';

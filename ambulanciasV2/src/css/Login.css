@@ -6,15 +6,10 @@
   margin: 0;
   display: flex;
   place-items: center;
- 
   min-height: 100vh;
-
-  background: linear-gradient(#161515, #9198e5);
-
+  background-color: #252954;
   font-size: 16px;
-
 }
-
 form{
   background-color: rgba(255, 255, 255, 1);
   font-size: 2rem;
