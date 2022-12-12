@@ -3,9 +3,7 @@
     
     
     min-height: 100vh;
-  
-    background-color:  #636ee6;
-  
+    background-color:#2f3030;
     font-size: 16px;
     
     display: grid;
@@ -15,27 +13,38 @@
     grid-row-gap: 0px;
 }
 
+.dashboardContainer{
+  margin: 0;
+    
+    
+  min-height: 100vh;
+  background-color:#2f3030;
+  font-size: 16px;
+
+  display: grid;
+  grid-template-columns: 0.5fr repeat(4, 1fr);
+  grid-template-rows: 0.5fr repeat(4, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
 .sidebar {
     position : absolute;
     left: -15vw;
     height: 97%;
     width: 15vw;
-    transition: left 0.3s ease-in-out;
+    transition: left 1s ease-in-out;
     background-color: whitesmoke;
     margin-top: 1.25rem;
     margin-bottom: 7.5rem;
-    border-radius: 3.125rem;
+    border-radius: 1rem;
+    display: absolute;
+    opacity: 90%;
   }
-  .sidebar-toggle {
-    position: absolute;
-    top: 20%;
-    right: -60px;
-    height: 60px;
-    width: 60px;
-    z-index: 1;
-  }
+
   .sidebar.open {
     left: 1vw;
+    border-radius: 1rem;
   }
 
 
@@ -46,22 +55,50 @@
     width: 78%;
     background-color: whitesmoke;
     margin: 1.25rem;
-    height: 10vh;
-    border-radius: 3.125rem;
+    height: 9vh;
+    border-radius: 1rem;
     align-items: center;
-    transition: left 0.5s ease-in-out;
+    transition: left 1s ease-in-out;
 }
 
 .Biginfo{
     position: absolute;
-    left: 1vw;
-    width: 97%;
+    left: 2vw;
+    width: 96%;
     background-color: whitesmoke;
     margin: 1.25rem;
-    height: 10vh;
-    border-radius: 3.125rem;
-    transition: left 0.5s ease-in-out;
+    height: 9vh;
+    border-radius: 1rem;
+    transition: left 1s ease-in-out;
 }
+
+.space { 
+
+  background-color: whitesmoke;
+  margin: 1.25rem;
+  border-radius: 1rem;
+
+  position: absolute;
+  left: 20vw;
+  width: 78%;
+  top: 10vh;
+  transition: left 1s ease-in-out;
+  height: 87vh;
+}
+
+.BigSpace{
+  background-color: whitesmoke;
+  margin: 1.25rem;
+  border-radius: 1rem;
+
+  position: absolute;
+  left: 2vw;
+  width: 96%;
+  top: 10vh;
+  height: 87vh;
+  transition: left 1s ease-in-out;
+}
+
 
 .img {
     grid-area: 1 / 1 / 2 / 2;  
@@ -91,59 +128,167 @@ hr{
     place-items: center;
 }
 
-.boton {
+.boton1 {
   align-items: center;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
+  background-color: whitesmoke;
+
   box-sizing: border-box;
   color: #121212;
   cursor: pointer;
-  display: inline-flex;
-  flex: 1 1 auto;
+
   font-family: Inter,sans-serif;
   font-size: 1rem;
   font-weight: 700;
-  justify-content: center;
-  line-height: 1;
-  margin: 0;
+
   outline: none;
   padding: 1rem 1.2rem;
   text-align: center;
-  text-decoration: none;
   transition: box-shadow .2s,-webkit-box-shadow .2s;
   white-space: nowrap;
   border: 0;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
   margin: 1.25rem;
+  width:80%;
+
+  
+  position: absolute;
+  top : 10vh;
+  height: 5vh;
 }
 
-.boton:hover {
-  box-shadow: #373738 0 0 0 2px, transparent 0 0 0 0;
-}
-
-.boton:focus{
-  background-color: #9da3eb;
+.boton1:focus{
+  background-color: #2f3030;
   color:white;
+  width: 100%;
+  border-top-left-radius: 2.5em 2.5em;
+  border-bottom-left-radius: 2.5em 2.5em;
+}
+
+
+.boton2 {
+  align-items: center;
+  background-color: whitesmoke;
+
+  color: #121212;
+  cursor: pointer;
+
+  font-family: Inter,sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+
+  outline: none;
+  padding: 1rem 1.2rem;
+  text-align: center;
+  transition: box-shadow .2s,-webkit-box-shadow .2s;
+  white-space: nowrap;
+  border: 0;
+  margin: 1.25rem;
+  width:80%;
+  
+  position: absolute;
+  top : 18vh;
+  height: 5vh;
+}
+
+.boton2:focus{
+  background-color: #2f3030;
+  color:white;
+  width: 100%;
+  border-top-left-radius: 2.5em 2.5em;
+  border-bottom-left-radius: 2.5em 2.5em;
+}
+
+.boton3 {
+  align-items: center;
+  background-color: whitesmoke;
+
+  color: #121212;
+  cursor: pointer;
+
+  font-family: Inter,sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+
+  outline: none;
+  padding: 1rem 1.2rem;
+  text-align: center;
+  transition: box-shadow .2s,-webkit-box-shadow .2s;
+  white-space: nowrap;
+  border: 0;
+  margin: 1.25rem;
+  width:80%;
+
+  
+  position: absolute;
+  top : 28vh;
+  height: 5vh;
+}
+
+.boton3:focus{
+  background-color: #2f3030;
+  color:white;
+  width: 100%;
+  border-top-left-radius: 2.5em 2.5em;
+  border-bottom-left-radius: 2.5em 2.5em;
+}
+
+.boton4 {
+  align-items: center;
+  background-color: whitesmoke;
+
+  color: #121212;
+  cursor: pointer;
+
+  font-family: Inter,sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+
+  outline: none;
+  padding: 1rem 1.2rem;
+  text-align: center;
+  transition: box-shadow .2s,-webkit-box-shadow .2s;
+  white-space: nowrap;
+  border: 0;
+  margin: 1.25rem;
+  width:80%;
+
+  
+  position: absolute;
+  top : 37vh;
+  height: 5vh;
+}
+
+.boton4:focus{
+  background-color: #2f3030;
+  color:white;
+  width: 100%;
+  border-top-left-radius: 2.5em 2.5em;
+  border-bottom-left-radius: 2.5em 2.5em;
 }
 
 .botonInfoContainer{
-  grid-area: 1 / 1 / 2 / 2;
+  position:absolute;
+  top : 25vh;
+  left : 13vw;
+  height: 5vh;
+  width: 5vw;
+  transition: 1s ease-in-out;  
 }
 
-.botonExitContainer{
-  grid-area: 1 / 5 / 2 / 6;
+.botonInfoContainer2{
+  position:absolute;
+  top : 25vh;
+  left : 14vw;
+  height: 5vh;
+  width: 5vw;
+  
+
 }
+
 
 .botonInfo{
   
   align-items: center;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
-  box-sizing: border-box;
+  background-color: whitesmoke;
   color: #121212;
   cursor: pointer;
   display: inline-flex;
@@ -154,18 +299,73 @@ hr{
   line-height: 1;
   margin: 0;
   outline: none;
-  padding: 1rem 1.2rem;
+  padding: 1rem;
   text-align: center;
   text-decoration: none;
-  transition: box-shadow .2s,-webkit-box-shadow .2s;
-  white-space: nowrap;
+  
   border: 0;
   user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  margin: 1.25rem;
-  border-radius: 40%;
+  display:None;
+  border-top-right-radius: 2.5em 2.5em;
+  border-bottom-right-radius: 2.5em 2.5em;
+
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  transform-origin: bottom;
 }
+
+.botonInfo2{
+  
+  align-items: center;
+  background-color: whitesmoke;
+  color: #121212;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: Inter,sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1;
+  margin: 0;
+  outline: none;
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+  
+  border: 0;
+  user-select: none;
+  display:block;
+  border-top-right-radius: 2.5em 2.5em;
+  border-bottom-right-radius: 2.5em 2.5em;
+
+}
+
+.botonInfoContainer:hover .botonInfo{ 
+	display:block;
+  animation-name: bounce;
+  animation-timing-function: ease;
+}
+
+.botonInfoContainer2:hover .botonInfo{ 
+	display:block;
+}
+
+@keyframes bounce {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
+
+.botonExitContainer{
+  position:absolute;
+  top : 80vh;
+  left : 6vw;
+  height: 5vh;
+  width: 5vw;
+  z-index:1;
+}
+
+
 
 .botonExit{
   
@@ -197,17 +397,8 @@ hr{
   border-radius: 40%;
 }
 
-.botonInfo:hover {
-  box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
-}
 
 
-.space { 
-    grid-area: 2 / 2 / 6 / 6; 
-    background-color: whitesmoke;
-    margin: 1.25rem;
-    border-radius: 3.125rem;
-}
 
 .infoContainer{
 

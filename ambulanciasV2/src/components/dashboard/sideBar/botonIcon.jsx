@@ -8,7 +8,7 @@ function BotonIcon(props) {
             <div className={Container}>
                 <div class = "d-flex justify-content-center" >
                     <button className = {botonStyle} onClick = {() => buttonHandler()}>
-                        <div className="fa-2x">
+                        <div className="fa-1x">
                             <FontAwesomeIcon icon={icon} className="mb-2"/>
                         </div>
                     </button>

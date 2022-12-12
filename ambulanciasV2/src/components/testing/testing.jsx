@@ -1,24 +1,10 @@
 import "./Testing.css"
 
 function Testing() {
-
-
-  
-
-
     return (<>
-    <div className = "Dashboard">
-    <div className={"sidebar open"}>
-      <div> I slide into view </div>
-      <div> Me Too! </div>
-      <div> Me Three! </div>
-      <button  className="sidebar-toggle">
-        Toggle Sidebar
-      </button>
+    <div class="mydivouter">	
+	      <button type="button" class="mybuttonoverlap">Read More</button>
     </div>
-    
-    </div>
-
     </>
 );
 }

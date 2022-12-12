@@ -1,39 +1,19 @@
 /* Google Font Link */
-.Dashboard {
-    margin: 0;
-    
-    
-    min-height: 100vh;
-  
-    background-color:  #636ee6;
-  
-    font-size: 16px;
-    
-    display: grid;
-    grid-template-columns: 1fr repeat(4, 1fr);
-    grid-template-rows: 0.5fr repeat(4, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+.mydivouter{
+	position:relative;
+	background: #f90;
+    width: 200px;
+    height: 120px;
+    margin: 0 auto;
 }
-.sidebar {
-    position : absolute;
-    left: -15vw;
-    height: 97%;
-    width: 15vw;
-    transition: left 0.3s ease-in-out;
-    background-color: whitesmoke;
-    margin-top: 1.25rem;
-    margin-bottom: 7.5rem;
-    border-radius: 3.125rem;
-  }
-  .sidebar-toggle {
-    position: absolute;
-    top: 20%;
-    right: -60px;
-    height: 60px;
-    width: 60px;
-    z-index: 1;
-  }
-  .sidebar.open {
-    left: 1vw;
-  }
+
+.mybuttonoverlap{
+	position: absolute;
+    z-index: 2;
+    top: 44px;
+    display: none;
+    left: 59px;	
+}
+.mydivouter:hover .mybuttonoverlap{ 
+	display:block;
+}

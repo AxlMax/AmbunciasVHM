@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 
@@ -11,20 +11,29 @@ import "./dashboard.css"
 function Dashboard() {
 
     const navigateTo = useNavigate()
+
+    const [space, sSpace] = useState("")
     const {value} = useSelector((state) => state.login)
+    const  show = useSelector((state) => state.sidebarShow.value)
 
     useEffect(()=> {
         if(value == "" || value == null){
             navigateTo("/login") 
         }
-    },[value])
+
+        if(show){
+            sSpace("space")
+        }else{
+           sSpace("BigSpace") 
+        }
+    },[value, show])
 
     return (
-    <div className = "Dashboard">
+    <div className = "dashboardContainer">
        <Info/>
        <SideBar/>
-       <div className = {"space"}>
-            <Map/>
+       <div className = {space}>
+            
        </div>
         
     </div>

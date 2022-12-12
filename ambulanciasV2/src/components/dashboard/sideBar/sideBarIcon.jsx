@@ -6,13 +6,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
  * @returns un boton que se renderiza en sideBar
  */
 
+import { useDispatch } from "react-redux";
+
 function SideBarIcon(props) {
 
-    const {label, icon} = props
+    const dispatch = useDispatch()
+
+    const {label, icon, botonStyle, handler, num} = props
+
+    const handlerButton = (num) => {
+
+    }
+
 
     return (<>
         <div className= "ContainerBoton">
-            <button className = "boton">
+            <button className = {botonStyle} onClick = {handlerButton(num)}>
             <FontAwesomeIcon icon={icon} className = "m-1"/>
                 {label}
             </button>
