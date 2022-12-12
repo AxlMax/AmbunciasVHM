@@ -43,9 +43,6 @@ function SideBar() {
         }
     }
 
-
-
-
     const buttonHandlerExit = () => {
         navigateTo("/login")
         localStorage.setItem('Oauth', "")
@@ -61,25 +58,25 @@ function SideBar() {
                 label = {"ambulancias"} 
                 icon = {faTruckMedical}
                 botonStyle = {"boton1"}
-                handler = {() => {}}
+                num = {1}
             />
             <SideBarIcon 
                 label = {"Hopitales"} 
                 icon = {faHospital}
                 botonStyle = {"boton2"}
-                handler = {() => {}}
+                num = {2}
             />
             <SideBarIcon 
                 label = {"Gps"} 
                 icon = {faLocationDot}
                 botonStyle = {"boton3"}
-                handler = {() => {}}
+                num = {3}
             />  
             <SideBarIcon 
                 label = {"Conductores"} 
                 icon = {faCar}
                 botonStyle = {"boton4"}
-                handler = {() => {}}
+                num = {4}
             />
 
             <BotonIcon

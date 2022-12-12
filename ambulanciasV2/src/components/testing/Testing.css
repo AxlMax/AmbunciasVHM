@@ -1,19 +1,41 @@
-/* Google Font Link */
-.mydivouter{
-	position:relative;
-	background: #f90;
-    width: 200px;
-    height: 120px;
-    margin: 0 auto;
+
+body {
+  height: 100%;
+  margin: 0;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  background-color: #e91e63;
 }
 
-.mybuttonoverlap{
-	position: absolute;
-    z-index: 2;
-    top: 44px;
-    display: none;
-    left: 59px;	
+.pagination {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  width: 180px;
+  height: 20px;
+  margin: 0 auto;
+  transform: translateY(-50%);
+  overflow: hidden;
+  z-index: 1;
 }
-.mydivouter:hover .mybuttonoverlap{ 
-	display:block;
+
+.button {
+  width: 20px;
+  height: 20px;
+  float: left;
+  margin-right: 20px;
+  background-color: black;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s ease width;
+}
+
+.button:last-child {
+  margin-right: 0;
+}
+
+.button.active {
+  width: 60px;
+  cursor: auto;
 }

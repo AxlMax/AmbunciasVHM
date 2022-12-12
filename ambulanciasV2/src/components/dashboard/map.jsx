@@ -2,9 +2,8 @@ import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
 function Map() {
     const mapStyles = {        
-        margin: "2em",
-        height: "80vh",
-        width: "98%",
+        height: "46vh",
+        width: "100%",
         borderRadius: "2em"
     };
     

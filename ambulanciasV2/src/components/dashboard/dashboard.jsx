@@ -7,6 +7,7 @@ import Map from "./map";
 import Info from "./info/info";
 
 import "./dashboard.css"
+import Ambulancias from "./ambulancias/ambulancias";
 
 function Dashboard() {
 
@@ -33,7 +34,7 @@ function Dashboard() {
        <Info/>
        <SideBar/>
        <div className = {space}>
-            
+            <Ambulancias/>            
        </div>
         
     </div>
