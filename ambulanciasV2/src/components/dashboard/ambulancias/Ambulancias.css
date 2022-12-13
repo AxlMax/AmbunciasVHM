@@ -1,0 +1,187 @@
+
+.containerCardD {
+position: absolute;
+height: 30%;
+width: 80%;
+top: 10vh;
+display: flex;
+left:10%;
+}
+
+.cardD {
+height: 280px;
+width: 30vw;
+background-color: #17141d;
+border-radius: 10px;
+box-shadow: -1rem 0 3rem #000;
+/*   margin-left: -50px; */
+left:0%;
+transition: 0.4s ease-out;
+position: relative;
+}
+
+.cardD:not(:first-child) {
+    margin-left: 1vw;
+}
+
+.cardD:hover {
+transform: translateY(-20px);
+transition: 0.4s ease-out;
+}
+
+.cardD:hover ~ .cardD {
+position: relative;
+left: 7%;
+transition: 0.4s ease-out;
+}
+
+.cardD:hover ~ .finalButton {
+    position: relative;
+    left: 7%;
+    transition: left 0.4s ease-out;
+}
+
+.finalButton{
+    margin-top: 10%;
+    display: relative;
+    height: 280px;
+    width: 15vw;
+    border-radius: 10px;
+    left:0%;
+    transition: 0.4s ease-out;
+    position: relative;
+}
+
+.paginationD {
+    position: absolute;
+    top: 40%;
+    right: 0;
+    left: 0%;
+    transform: translateY(-50%);
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .buttonD {
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin-right: 10px;
+    background-color: black;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s ease width;
+  }
+  
+  .buttonD:last-child {
+    margin-right: 0;
+  }
+  
+  .buttonD.active {
+    width: 30px;
+    cursor: auto;
+  }
+
+  .placa {
+    color:white;
+    display: inline-block;
+    align-items: center;
+    margin-left: 3vw;
+    width: 100%;
+  }
+
+  .botonCardContainer{
+        display: grid;
+        grid-template-columns: 0.5fr 1fr 0.5fr;
+        grid-template-rows: 1fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px; 
+  }
+
+  .trashBoton{
+    grid-area: 1 / 1 / 2 / 2;
+    display: flex;
+    align-items: center;
+  }
+
+  .trashBotonStyle{
+    align-items: center;
+    background-color:#17141d;;
+    border-radius: 12px;
+    box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
+    box-sizing: border-box;
+    color: #121212;
+    cursor: pointer;
+    display: inline-flex;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 1;
+    margin: 0;
+    outline: none;
+    padding: 0.5rem 0.5rem;
+    text-align: center;
+    text-decoration: none;
+    border: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    border-radius: 40%;
+    margin-left: 1vw;
+    margin-top: 14vh;
+    color:rgb(236, 65, 65)
+  }
+
+
+  .gearBoton{
+    grid-area: 1 / 2 / 2 / 3;
+  }
+
+  .gearBotonStyle{
+    align-items: center;
+    background-color:#17141d;
+    border-radius: 12px;
+    box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
+    box-sizing: border-box;
+    color: #121212;
+    cursor: pointer;
+    display: inline-flex;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 1;
+    margin: 0;
+    outline: none;
+    padding: 0.5rem 0.5rem;
+    text-align: center;
+    text-decoration: none;
+    border: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+
+    border-radius: 40%;
+    margin-left: 5vw;
+    margin-top: 14vh;
+    color:rgb(238, 234, 11)
+  
+  }
+
+  .map{
+    
+    position: absolute;
+    
+    height: 46vh;
+    width: 75vw;
+
+    top: 45%;
+    right: 0;
+    left: 2%;
+  }
+
+
+
+
+
+
+
+
+  

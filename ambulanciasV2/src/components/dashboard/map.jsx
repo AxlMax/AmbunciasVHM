@@ -2,9 +2,8 @@ import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
 function Map() {
     const mapStyles = {        
-        margin: "2em",
-        height: "80vh",
-        width: "98%",
+        height: "46vh",
+        width: "100%",
         borderRadius: "2em"
     };
     
@@ -13,14 +12,14 @@ function Map() {
     }
 
     return <>
-    <LoadScript
-       googleMapsApiKey='AIzaSyC-M5uwjxfOmKFYXjwKVpxBdAsY3Bv1LbQ'>
-        <GoogleMap
-          mapContainerStyle={mapStyles}
-          zoom={13}
-          center={defaultCenter}
-        />
-     </LoadScript>
+        <LoadScript
+        googleMapsApiKey='AIzaSyC-M5uwjxfOmKFYXjwKVpxBdAsY3Bv1LbQ'>
+            <GoogleMap
+            mapContainerStyle={mapStyles}
+            zoom={13}
+            center={defaultCenter}
+            />
+        </LoadScript>
     </>;
 }
 

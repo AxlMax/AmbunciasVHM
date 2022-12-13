@@ -1,7 +1,13 @@
+import "./noFound.css"
+
 function NoFound() {
     return ( 
         <>
-            <h1> pagina no encontrada </h1>
+            <div className="NoFoundContainer">
+                <div className = "image">
+                    <img src="/pageNoFound.png" class="img-fluid"/>
+                </div>
+            </div>
         </> 
     );
 }
