@@ -3,26 +3,48 @@ import { faTrash, faGear } from "@fortawesome/free-solid-svg-icons";
 
 function Card(props) {
 
-    const {placa} = props
+    const {placa, ubicacion} = props
 
     return (<>
             <div class="cardD">
-                <h3 class = "placa"> {placa}</h3>
-                <div class = "botonCardContainer">
+
+
+                <div class = "placa">
+                    <div class = "bordePlaca">
+                        <div class = "huecosPlacaL"/>
+                        <div class = "huecosPlacaR"/>
+
+                        <div class = "letrasPlaca">
+                            <h3> {placa} </h3>
+                        </div>
+                            
+                        
+
+                        <div class = "huecosPlacaL"/>
+                        <div class = "huecosPlacaR"/>
+                        <h8 class = "d-flex justify-content-center" > {placa} </h8>
+                        
+                    </div>
+                        
+               
+                </div>
+                    
 
                     <BotonIcon
                     Container     = {"trashBoton"} 
                     botonStyle    = {"trashBotonStyle"}
                     icon          = {faTrash}
-                    buttonHandler = {() => {}}/>
+                    buttonHandler = {() => {}}
+                    center = {false}/>
 
                     <BotonIcon
                     Container     = {"gearBoton"} 
                     botonStyle    = {"gearBotonStyle"}
                     icon          = {faGear}
-                    buttonHandler = {() => {}}/>
+                    buttonHandler = {() => {}}
+                    center = {false}/>
 
-                </div>
+
 
 
             </div>

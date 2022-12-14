@@ -3,7 +3,7 @@
     
     
     min-height: 100vh;
-    background-color:#2f3030;
+    background-color:#e0e0e0;
     font-size: 16px;
     
     display: grid;
@@ -18,32 +18,26 @@
     
     
   min-height: 100vh;
-  background-color:#2f3030;
+  background-color:#e0e0e0;
   font-size: 16px;
 
-  display: grid;
-  grid-template-columns: 0.5fr repeat(4, 1fr);
-  grid-template-rows: 0.5fr repeat(4, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
 }
 
 .sidebar {
     position : absolute;
-    left: -15vw;
-    height: 97%;
-    width: 15vw;
+    left: -7vw;
+    width: 6vw;
     transition: left 1s ease-in-out;
-    background-color: whitesmoke;
+    background-color: #8293EB;
     margin-top: 1.25rem;
     margin-bottom: 7.5rem;
     border-radius: 1rem;
-    display: absolute;
     opacity: 90%;
+    margin-top:12%;
   }
 
   .sidebar.open {
-    left: 1vw;
+    left: 2vw;
     border-radius: 1rem;
   }
 
@@ -51,9 +45,8 @@
 
 .info {
     position: absolute;
-    left: 20vw;
-    width: 78%;
-    background-color: whitesmoke;
+    left: 10vw;
+    width: 88%;
     margin: 1.25rem;
     height: 9vh;
     border-radius: 1rem;
@@ -65,7 +58,6 @@
     position: absolute;
     left: 2vw;
     width: 96%;
-    background-color: whitesmoke;
     margin: 1.25rem;
     height: 9vh;
     border-radius: 1rem;
@@ -74,20 +66,18 @@
 
 .space { 
 
-  background-color: whitesmoke;
   margin: 1.25rem;
   border-radius: 1rem;
 
   position: absolute;
-  left: 20vw;
-  width: 78%;
+  left: 10vw;
+  width: 88%;
   top: 10vh;
   transition: left 1s ease-in-out;
   height: 87vh;
 }
 
 .BigSpace{
-  background-color: whitesmoke;
   margin: 1.25rem;
   border-radius: 1rem;
 
@@ -105,21 +95,16 @@
 }
 
 .img-fluid2 {
-    max-width: 100%;
-    height: 5vh;
-    padding: 1em;
-    margin: 1em;
-    width: 80%;
+    max-width: 80%;
+    margin: 0.5em
 }
-
-hr{
-    position: relative; 
-    height: 0.3125rem; 
-    background: black; 
-    color: black;
-    
-    margin-left: 0.625rem;
-    margin-right: 0.625rem;
+div.divisor{
+  position: relative; 
+  height: 0.3125rem; 
+  background: #e0e0e0; 
+  color: #e0e0e0;
+  width:100%;
+  margin-top: 1vh;
 }
 
 
@@ -129,11 +114,11 @@ hr{
 }
 
 .boton1 {
-  align-items: center;
-  background-color: whitesmoke;
+
+  background-color: #8293EB;
 
   box-sizing: border-box;
-  color: #121212;
+  color: #e0e0e0;
   cursor: pointer;
 
   font-family: Inter,sans-serif;
@@ -141,154 +126,45 @@ hr{
   font-weight: 700;
 
   outline: none;
-  padding: 1rem 1.2rem;
-  text-align: center;
-  transition: box-shadow .2s,-webkit-box-shadow .2s;
-  white-space: nowrap;
-  border: 0;
-  margin: 1.25rem;
-  width:80%;
 
-  
-  position: absolute;
-  top : 10vh;
+  transition: box-shadow .2s,-webkit-box-shadow .2s;
+
+  border: 0;
+  margin: 1vh;
+  top : 5vh;
   height: 5vh;
+  width: 100px;
 }
 
 .boton1:focus{
-  background-color: #2f3030;
-  color:white;
+  background-color: #e0e0e0;
+  color:black;
   width: 100%;
-  border-top-left-radius: 2.5em 2.5em;
-  border-bottom-left-radius: 2.5em 2.5em;
-}
-
-
-.boton2 {
-  align-items: center;
-  background-color: whitesmoke;
-
-  color: #121212;
-  cursor: pointer;
-
-  font-family: Inter,sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-
-  outline: none;
-  padding: 1rem 1.2rem;
-  text-align: center;
-  transition: box-shadow .2s,-webkit-box-shadow .2s;
-  white-space: nowrap;
-  border: 0;
-  margin: 1.25rem;
-  width:80%;
-  
-  position: absolute;
-  top : 18vh;
-  height: 5vh;
-}
-
-.boton2:focus{
-  background-color: #2f3030;
-  color:white;
-  width: 100%;
-  border-top-left-radius: 2.5em 2.5em;
-  border-bottom-left-radius: 2.5em 2.5em;
-}
-
-.boton3 {
-  align-items: center;
-  background-color: whitesmoke;
-
-  color: #121212;
-  cursor: pointer;
-
-  font-family: Inter,sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-
-  outline: none;
-  padding: 1rem 1.2rem;
-  text-align: center;
-  transition: box-shadow .2s,-webkit-box-shadow .2s;
-  white-space: nowrap;
-  border: 0;
-  margin: 1.25rem;
-  width:80%;
-
-  
-  position: absolute;
-  top : 28vh;
-  height: 5vh;
-}
-
-.boton3:focus{
-  background-color: #2f3030;
-  color:white;
-  width: 100%;
-  border-top-left-radius: 2.5em 2.5em;
-  border-bottom-left-radius: 2.5em 2.5em;
-}
-
-.boton4 {
-  align-items: center;
-  background-color: whitesmoke;
-
-  color: #121212;
-  cursor: pointer;
-
-  font-family: Inter,sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-
-  outline: none;
-  padding: 1rem 1.2rem;
-  text-align: center;
-  transition: box-shadow .2s,-webkit-box-shadow .2s;
-  white-space: nowrap;
-  border: 0;
-  margin: 1.25rem;
-  width:80%;
-
-  
-  position: absolute;
-  top : 37vh;
-  height: 5vh;
-}
-
-.boton4:focus{
-  background-color: #2f3030;
-  color:white;
-  width: 100%;
+  margin-left: 1vw;
   border-top-left-radius: 2.5em 2.5em;
   border-bottom-left-radius: 2.5em 2.5em;
 }
 
 .botonInfoContainer{
   position:absolute;
-  top : 25vh;
-  left : 13vw;
+  top : 14vh;
+  left : 4vw;
   height: 5vh;
   width: 5vw;
   transition: 1s ease-in-out;  
 }
 
 .botonInfoContainer2{
-  position:absolute;
-  top : 25vh;
-  left : 14vw;
-  height: 5vh;
+  margin-left: 7vh;
   width: 5vw;
-  
-
+  position:absolute;
+  top : 14vh;
 }
-
 
 .botonInfo{
   
   align-items: center;
-  background-color: whitesmoke;
+  background-color: #8293EB;
   color: #121212;
   cursor: pointer;
   display: inline-flex;
@@ -316,15 +192,12 @@ hr{
 
 .botonInfo2{
   
-  align-items: center;
-  background-color: whitesmoke;
+
+  background-color: #8293EB;
   color: #121212;
   cursor: pointer;
   display: inline-flex;
-  font-family: Inter,sans-serif;
-  font-size: 1rem;
   font-weight: 700;
-  justify-content: center;
   line-height: 1;
   margin: 0;
   outline: none;
@@ -334,7 +207,6 @@ hr{
   
   border: 0;
   user-select: none;
-  display:block;
   border-top-right-radius: 2.5em 2.5em;
   border-bottom-right-radius: 2.5em 2.5em;
 
@@ -357,11 +229,6 @@ hr{
 }
 
 .botonExitContainer{
-  position:absolute;
-  top : 80vh;
-  left : 6vw;
-  height: 5vh;
-  width: 5vw;
   z-index:1;
 }
 
@@ -426,10 +293,6 @@ hr{
   margin: 1.25rem;
   border-radius: 40%;
 }
-
-
-
-
 
 .infoContainer{
 

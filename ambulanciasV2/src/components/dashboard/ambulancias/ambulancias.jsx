@@ -12,20 +12,21 @@ import "./Ambulancias.css"
 function Ambulancias() {
 
     const ambulancias = ["AB345", "43RAS", "345DA", "432ECD", "233AS", 
-                        "223AS", "AB345", "43RAS", "AB345", "43RAS", 
-                        "345DA", "432ECD", "233AS", "223AS", "AB345", 
-                        "43RAS"]
+                        "223AS", "AB345"]
 
     const {value} = useSelector((state) => state.sidebarShow)
 
     const [num, sNum] = useState(4)
     const [index, sIndex] = useState(0)
-    
+    const [map, sMap] = useState("map")
+
     useEffect(()=> {
         if(value){
             sNum(4)
+            sMap("map")
         }else{
             sNum(6) 
+            sMap("map open")
 
         }
         
@@ -92,7 +93,7 @@ function Ambulancias() {
         </div>
 
 
-        <div class = "map">
+        <div class = {map}>
             <Map/>
         </div>
 
