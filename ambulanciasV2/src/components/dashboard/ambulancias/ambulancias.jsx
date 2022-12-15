@@ -6,16 +6,22 @@ import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import BotonIcon from "../sideBar/botonIcon";
 import Card from "./card";
 import Map from '../map';
+import AutoCompleteInput from './autoCompleteInput';
 
 import "./Ambulancias.css"
 
 function Ambulancias() {
 
+
+
     const ambulancias = ["AB345", "43RAS", "345DA", "432ECD", "233AS", 
                         "223AS", "AB345"]
+    
+    const ubicaciones = ["Cali", "Cali", "Cali", "Cali", "Cali", "Cali", "Cali"]
 
     const {value} = useSelector((state) => state.sidebarShow)
 
+    const [list, sList] = useState(ambulancias)
     const [num, sNum] = useState(4)
     const [index, sIndex] = useState(0)
     const [map, sMap] = useState("map")
@@ -45,6 +51,8 @@ function Ambulancias() {
     const valuesPagination = range(0, Math.ceil(numAmbulacias/num) - 1)
 
     return (<>
+
+        <AutoCompleteInput list = {ambulancias} sListF = {sList}/>
         
         <div class="containerCardD">
             <BotonIcon
@@ -57,10 +65,10 @@ function Ambulancias() {
                     }
                 }}
             />
-                {ambulancias.map((v,i) => {
+                {list.map((v,i) => {
 
                     if(i >= index*num  && i < (index + 1)*num){
-                        return <Card placa = {v}/>
+                        return <Card placa = {v} ubicacion = {ubicaciones[i]}/>
                     }
 
                     

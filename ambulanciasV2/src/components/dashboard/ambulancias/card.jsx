@@ -22,7 +22,7 @@ function Card(props) {
 
                         <div class = "huecosPlacaL"/>
                         <div class = "huecosPlacaR"/>
-                        <h8 class = "d-flex justify-content-center" > {placa} </h8>
+                        <h8 class = "d-flex justify-content-center" > {ubicacion} </h8>
                         
                     </div>
                         

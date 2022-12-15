@@ -10,7 +10,7 @@ function BotonIcon(props) {
             <div className={Container}>
                 <div class = {centerRef}>
                     <button className = {botonStyle} onClick = {() => buttonHandler()}>
-                        <div className="fa-1x">
+                        <div className="fa-1.5x">
                             <FontAwesomeIcon icon={icon} className="mb-2"/>
                         </div>
                     </button>
