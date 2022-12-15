@@ -1,7 +1,7 @@
 
 import { useEffect, useState} from 'react'
 import { useSelector} from "react-redux";
-import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faArrowLeft, faArrowsRotate, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 import BotonIcon from "../sideBar/botonIcon";
 import Card from "./card";
@@ -51,8 +51,31 @@ function Ambulancias() {
     const valuesPagination = range(0, Math.ceil(numAmbulacias/num) - 1)
 
     return (<>
+        <div class = "containerHeader">
+            <div class = "containerSearch">
+                <AutoCompleteInput list = {ambulancias} sListF = {sList}/>
 
-        <AutoCompleteInput list = {ambulancias} sListF = {sList}/>
+
+                <BotonIcon
+                    Container     = {"refreshButtonContainer"} 
+                    botonStyle    = {"refreshButton"}
+                    icon          = {faArrowsRotate}
+                    center        = {false}
+                    buttonHandler = {() => sList(ambulancias)}
+                />
+
+                <BotonIcon
+                    Container     = {"plusButtonContainer"} 
+                    botonStyle    = {"plusButton"}
+                    icon          = {faPlus}
+                    center        = {false}
+                    buttonHandler = {() => {}}
+                />
+
+            </div>
+
+        </div>
+        
         
         <div class="containerCardD">
             <BotonIcon

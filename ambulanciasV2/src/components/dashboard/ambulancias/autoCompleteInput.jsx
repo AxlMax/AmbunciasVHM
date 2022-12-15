@@ -35,8 +35,7 @@ function AutoCompleteInput(props) {
     }
 
     return (<>
-        <div class = "containerHeader">
-            <div class = "containerSearch">
+            
                 <input class = "search" placeholder='@search' onChange={handleInput} value={value}></input>
 
                 <BotonIcon
@@ -50,8 +49,7 @@ function AutoCompleteInput(props) {
 
                 {List.map((v,i) => <ItemInput contenido = {v} sValue = {sValue} sShow = {sShow}/>)}
 
-            </div>
-        </div>
+    
     </>);
 }
 

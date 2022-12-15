@@ -241,12 +241,14 @@ transition: 0.4s ease-out;
 
   .searchButtonContainer{
     margin:0;
+    width:20%;
+    display: inline-block;
   }
   .searchButton{
     background-color:rgb(69, 160, 235);
     height: 40px;
     border:none;
-    width: 5%;
+    width: 20%;
     border-top-right-radius: 1vw;
     border-bottom-right-radius: 1vw;
   }
@@ -261,6 +263,37 @@ transition: 0.4s ease-out;
   .items:hover{
     background-color:white;
     border-width:2px;
+  }
+
+  .refreshButton{
+    background-color:rgb(69, 160, 235);
+    height: 40px;
+    border:none;
+    width: 10%;
+    border-radius: 1vw;
+  }
+
+  .refreshButtonContainer{
+    margin:0;
+    width:40%;
+    position: absolute;
+    top:5vh;
+    left:42vw;
+  }
+
+  .plusButtonContainer{
+    margin:0;
+    position: absolute;
+    top:5vh;
+    left:80vw;
+  }
+
+  .plusButton{
+    background-color:rgb(117, 212, 88);
+    height: 40px;
+    border:none;
+    width: 200%;
+    border-radius: 1vw;
   }
 
 
