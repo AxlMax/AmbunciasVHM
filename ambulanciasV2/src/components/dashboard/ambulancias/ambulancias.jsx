@@ -1,13 +1,14 @@
 
 import { useEffect, useState} from 'react'
 import { useSelector} from "react-redux";
+import jwt_decode from "jwt-decode";
 import { faArrowRight, faArrowLeft, faArrowsRotate, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 import BotonIcon from "../../global/botonIcon";
 import Card from "./card";
 import Map from '../map';
 import AutoCompleteInput from './autoCompleteInput';
-import jwt_decode from "jwt-decode";
+import MyModal from '../../global/modal';
 
 import "./Ambulancias.css"
 
