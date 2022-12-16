@@ -3,10 +3,11 @@ import { useEffect, useState} from 'react'
 import { useSelector} from "react-redux";
 import { faArrowRight, faArrowLeft, faArrowsRotate, faPlus } from "@fortawesome/free-solid-svg-icons";
 
-import BotonIcon from "../sideBar/botonIcon";
+import BotonIcon from "../../global/botonIcon";
 import Card from "./card";
 import Map from '../map';
 import AutoCompleteInput from './autoCompleteInput';
+import jwt_decode from "jwt-decode";
 
 import "./Ambulancias.css"
 
@@ -20,6 +21,9 @@ function Ambulancias() {
     const ubicaciones = ["Cali", "Cali", "Cali", "Cali", "Cali", "Cali", "Cali"]
 
     const {value} = useSelector((state) => state.sidebarShow)
+    const user = useSelector((state) => state.login)
+
+    console.log(jwt_decode(user.value))
 
     const [list, sList] = useState(ambulancias)
     const [num, sNum] = useState(4)

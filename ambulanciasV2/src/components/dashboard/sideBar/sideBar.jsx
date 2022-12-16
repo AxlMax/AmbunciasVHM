@@ -11,7 +11,7 @@ import {
     faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 import SideBarIcon from "./sideBarIcon";
-import BotonIcon from "./botonIcon";
+import BotonIcon from "../../global/botonIcon";
 
 import { Change } from "../../../storage/features/showSidebar/showSidebarSlice";
 

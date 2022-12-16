@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
 function Map() {
+
+    const mapApi = import.meta.env.VITE_GOOGLE_API
+
     const mapStyles = {        
         height: "25vh",
         width: "100%",
@@ -27,13 +30,14 @@ function Map() {
     }
 
     return <>
-        <LoadScript
-        googleMapsApiKey='AIzaSyCh_UN5jDzSI89hXTnrWoNcpQjnfbGZG8Q'>
+        <LoadScript googleMapsApiKey={mapApi}>
+
             <GoogleMap
             mapContainerStyle={mapStyles}
-            zoom={13}
+            zoom={11}
             center={defaultCenter}
             />
+
         </LoadScript>
     </>;
 }

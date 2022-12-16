@@ -2,7 +2,7 @@ import { useState } from "react";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 import ItemInput from './itemInput';
-import BotonIcon from "../sideBar/botonIcon";
+import BotonIcon from "../../global/botonIcon";
 
 function AutoCompleteInput(props) {
 

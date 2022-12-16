@@ -1,4 +1,4 @@
-import BotonIcon from "../sideBar/botonIcon";
+import BotonIcon from "../../global/botonIcon";
 import { faTrash, faGear } from "@fortawesome/free-solid-svg-icons";
 
 function Card(props) {
@@ -22,7 +22,7 @@ function Card(props) {
 
                         <div class = "huecosPlacaL"/>
                         <div class = "huecosPlacaR"/>
-                        <h8 class = "d-flex justify-content-center" > {ubicacion} </h8>
+                        <h6 class = "d-flex justify-content-center" > {ubicacion} </h6>
                         
                     </div>
                         
