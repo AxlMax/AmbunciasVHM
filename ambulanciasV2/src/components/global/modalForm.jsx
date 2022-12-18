@@ -1,7 +1,7 @@
+import { useForm } from "react-hook-form";
 import useOnclickOutside from "react-cool-onclickoutside";
 
-import "./Global.css"
-
+import './Global.css'
 /**
  * 
  * @param {*} props 
@@ -12,36 +12,40 @@ import "./Global.css"
  * @returns 
  */
 
-function MyModal(props) {
+function ModalForm(props) {
 
-    const {forwardedRef, title, Body, Footer} = props
+    const {forwardedRef, title, Body, Footer, onSubmit} = props
 
     const handleClose = () => forwardedRef.current.style.display = "none" 
     const ref = useOnclickOutside(handleClose);
+
+    const { handleSubmit, register } = useForm();
 
     return (<>
 
     <div id="myModal" class="modal" ref={forwardedRef}>
 
-        <div class="modal-contentN" ref = {ref}>
-            <div class="modal-header">
-                <h2>{title}</h2>
+    <div class="modal-contentN" ref = {ref}>
+        <div class="modal-header">
+            <h2>{title}</h2>
 
-                <span class="close" onClick={handleClose}>&times;</span>
-            
-            </div>
+            <span class="close" onClick={handleClose}>&times;</span>
+        
+        </div>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <div class="modal-body">
-                {Body()}
-              
+                {Body(register)}
+            
             </div>
             <div class="modal-footerN">
                 {Footer()}
             </div>
-        </div>
+        </form>
+    </div>
 
     </div>
 
     </>);
 }
 
-export default MyModal;
+export default ModalForm;

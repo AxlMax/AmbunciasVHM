@@ -25,29 +25,31 @@ function AutoCompleteInput(props) {
             }
         })
 
+        console.log(volatileList)
+
         sList(volatileList)
 
     }
 
-    if(list.length == List.length || show == true){
+    if(show == true){
         sList([])
         sShow(false)
     }
 
     return (<>
             
-                <input class = "search" placeholder='@search' onChange={handleInput} value={value}></input>
+            <input class = "search" placeholder='@search' onChange={handleInput} value={value}></input>
 
-                <BotonIcon
-                    Container     = {"searchButtonContainer"} 
-                    botonStyle    = {"searchButton"}
-                    icon          = {faMagnifyingGlass}
-                    center        = {false}
-                    buttonHandler   = {() => sListF([value])}
+<BotonIcon
+    Container     = {"searchButtonContainer"} 
+    botonStyle    = {"searchButton"}
+    icon          = {faMagnifyingGlass}
+    center        = {false}
+    buttonHandler   = {() => sListF([{"placa" : value}])}
 
-                />
+/>
 
-                {List.map((v,i) => <ItemInput contenido = {v} sValue = {sValue} sShow = {sShow}/>)}
+{List.map((v,i) => <ItemInput contenido = {v} sValue = {sValue} sShow = {sShow}/>)}
 
     
     </>);

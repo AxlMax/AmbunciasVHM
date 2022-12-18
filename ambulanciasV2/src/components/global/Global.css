@@ -78,3 +78,32 @@
     from {opacity: 0} 
     to {opacity: 1}
   }
+
+  .inputForm{
+    
+    display: inline-flex;
+    margin: 5%;
+    flex-direction: column;
+    width: 40%;
+  }
+
+  .titleInputForm{
+    border-top-left-radius: 1vw;
+    border-top-right-radius: 1vw;
+    background-color: rgb(69, 160, 235);
+    color:white;
+    display: flex;
+    text-align: center;
+    margin:0;
+    padding: 0.625rem;
+    flex-direction: column;
+    font-size: 1rem;
+  }
+
+  .inputStyleForm{
+    background-color:whitesmoke;
+    height: 6vh;
+    border: none;
+    border-bottom-left-radius: 1vw;
+    border-bottom-right-radius: 1vw;
+  }

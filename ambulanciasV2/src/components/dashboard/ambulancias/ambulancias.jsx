@@ -1,34 +1,110 @@
 
-import { useEffect, useState} from 'react'
+//librerias
+import { useEffect, useState, useRef} from 'react'
 import { useSelector} from "react-redux";
-import jwt_decode from "jwt-decode";
-import { faArrowRight, faArrowLeft, faArrowsRotate, faPlus } from "@fortawesome/free-solid-svg-icons";
+import jwtDecode from 'jwt-decode';
+import { faArrowRight, faArrowLeft, faArrowsRotate, faPlus, faCheck, faSliders } from "@fortawesome/free-solid-svg-icons";
 
+//componentes
 import BotonIcon from "../../global/botonIcon";
 import Card from "./card";
 import Map from '../map';
 import AutoCompleteInput from './autoCompleteInput';
-import MyModal from '../../global/modal';
+import ModalForm from '../../global/modalForm';
+import InputForm from '../../global/inputForm';
 
+//funciones generales
+import range from '../../../../public/functions/generalFunctions';
+
+//servicios
+import RambulanciasByuser from '../../../services/user';
+
+// estilos css
 import "./Ambulancias.css"
 
 function Ambulancias() {
 
+    //************************************************** */
+    // traer los valores de la base de datos
 
-
-    const ambulancias = ["AB345", "43RAS", "345DA", "432ECD", "233AS", 
-                        "223AS", "AB345"]
+    const [ambulancias, sAmbulancias] = useState([""])
+    const [ubicaciones, sUbicaciones] = useState([""])
+    const [refreshList, sRefreshList] = useState(false)
     
-    const ubicaciones = ["Cali", "Cali", "Cali", "Cali", "Cali", "Cali", "Cali"]
+    const [list, sList] = useState([])
 
-    const {value} = useSelector((state) => state.sidebarShow)
     const user = useSelector((state) => state.login)
 
-    console.log(jwt_decode(user.value))
+    const asyncEffect = async() => {
+        const decodeUser = jwtDecode(user.value).doc
+        const data = await (await RambulanciasByuser(decodeUser['_id'], user.value)).data
+        sList(data)
+        
+        const ambulanciasAux = []
+        const ubicacionesAux = []
 
-    const [list, sList] = useState(ambulancias)
+        data.map((v,i) => {
+            ambulanciasAux.push(v.placa)
+            ubicacionesAux.push(v.ubicacion)
+        })
+        
+        sAmbulancias(ambulanciasAux)
+        sUbicaciones(ubicacionesAux)
+    } 
+    
+    useEffect(() => {
+
+        asyncEffect()
+
+    },[refreshList])
+    
+    //******************************************************//
+    // modal de creacion de ambulancias
+
+    const childRef = useRef(null)
+
+    const onSubmitForm = async(data) => {
+        console.log(data)
+    }
+
+
+    const Body = (register) =>  <>
+    
+            <InputForm
+                title = {"placa"}
+                register = {register}
+                registerName = {"placa"}
+            />
+            
+            <InputForm
+                title = {"ubicación"}
+                register = {register}
+                registerName = {"ubicacion"}
+            />
+            
+    </>
+
+    const Footer = () => <>
+                <BotonIcon
+                    Container     = {"checkButtonContainer"} 
+                    botonStyle    = {"checkButtonStyle"}
+                    icon          = {faCheck}
+                    center        = {false}
+                    buttonHandler = {() => {}}
+                />
+        </>
+
+    //******************************************************//
+
+    // variables y es use efect para las animaciones 
+
+    const {value} = useSelector((state) => state.sidebarShow)
+    
+    // numero de card segun el estado open o normal
     const [num, sNum] = useState(4)
-    const [index, sIndex] = useState(0)
+    // index del paginador
+    
+
     const [map, sMap] = useState("map")
 
     useEffect(()=> {
@@ -43,30 +119,28 @@ function Ambulancias() {
         
     },[value])
 
-    function range(start, end) {
-        var ans = [];
-        for (let i = start; i <= end; i++) {
-            ans.push(i);
-        }
-        return ans;
-    }
+    //******************************************************//
 
+    // variables del paginador
+
+    const [index, sIndex] = useState(0)
     const numAmbulacias = ambulancias.length
-
     const valuesPagination = range(0, Math.ceil(numAmbulacias/num) - 1)
+
+    //******************************************************//
 
     return (<>
         <div class = "containerHeader">
             <div class = "containerSearch">
-                <AutoCompleteInput list = {ambulancias} sListF = {sList}/>
-
+               
+            <AutoCompleteInput list = {ambulancias} sListF = {sList}/>     
 
                 <BotonIcon
                     Container     = {"refreshButtonContainer"} 
                     botonStyle    = {"refreshButton"}
                     icon          = {faArrowsRotate}
                     center        = {false}
-                    buttonHandler = {() => sList(ambulancias)}
+                    buttonHandler = {() => sRefreshList(!refreshList)}
                 />
 
                 <BotonIcon
@@ -74,7 +148,7 @@ function Ambulancias() {
                     botonStyle    = {"plusButton"}
                     icon          = {faPlus}
                     center        = {false}
-                    buttonHandler = {() => {}}
+                    buttonHandler = {() => childRef.current.style.display = "flex"}
                 />
 
             </div>
@@ -95,8 +169,9 @@ function Ambulancias() {
             />
                 {list.map((v,i) => {
 
+
                     if(i >= index*num  && i < (index + 1)*num){
-                        return <Card placa = {v} ubicacion = {ubicaciones[i]}/>
+                        return <Card placa = {v.placa} ubicacion = {v.ubicacion}/>
                     }
 
                     
@@ -132,6 +207,14 @@ function Ambulancias() {
         <div class = {map}>
             <Map/>
         </div>
+
+        <ModalForm
+            forwardedRef={childRef} 
+            title = {"Crear Ambulancia"}
+            Body = {Body}
+            Footer = {Footer}
+            onSubmit = {onSubmitForm}
+        />
 
 
        
