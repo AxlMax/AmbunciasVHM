@@ -18,7 +18,7 @@ import range from '../../../../public/functions/generalFunctions';
 
 //servicios
 import RambulanciasByuser, {linkAmbulancia} from '../../../services/user';
-import Cambulancia, {Dambulancia} from '../../../services/ambulancias';
+import Cambulancia, {RgpsByambulancia} from '../../../services/ambulancias';
 
 // estilos css
 import "./Ambulancias.css"
@@ -31,7 +31,8 @@ function Ambulancias() {
     const [ambulancias, sAmbulancias] = useState([""])
     const [ubicaciones, sUbicaciones] = useState([""])
     const [refreshList, sRefreshList] = useState(false)
-    
+    const [gpsArray, sGpsArray] = useState([])
+
     const [list, sList] = useState([])
 
     const token = useSelector((state) => state.login).value
@@ -41,7 +42,7 @@ function Ambulancias() {
         
         const data = await (await RambulanciasByuser(decodeUser['_id'], token)).data
         
-        console.log(data)
+        
 
         if(data[0] == null){
             sList([])
@@ -51,10 +52,18 @@ function Ambulancias() {
             const ambulanciasAux = []
             const ubicacionesAux = []
     
-            data.map((v,i) => {
+            data.map(async(v,i) => {
                 ambulanciasAux.push(v.placa)
                 ubicacionesAux.push(v.ubicacion)
+
+                console.log(v["_id"])
+
+                const gps = await (await RgpsByambulancia(v["_id"],token)).data
+                sGpsArray(...gpsArray, gps)
+
             })
+
+            console.log(gpsArray)
             
             sAmbulancias(ambulanciasAux)
             sUbicaciones(ubicacionesAux)
@@ -276,7 +285,7 @@ function Ambulancias() {
 
 
         <div class = {map}>
-            <Map/>
+            <Map gps = {gpsArray}/>
         </div>
 
 
@@ -289,13 +298,6 @@ function Ambulancias() {
             onSubmit      = {onSubmitFormC}
             modalStyle    = {modalStyle}
         />
-
-        
-        
-       
-
-
-       
     </>);
 }
 
