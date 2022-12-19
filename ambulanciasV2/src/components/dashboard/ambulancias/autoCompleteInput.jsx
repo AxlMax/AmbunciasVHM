@@ -27,8 +27,6 @@ function AutoCompleteInput(props) {
             }
         })
 
-        console.log(volatileList)
-
         sList(volatileList)
 
     }

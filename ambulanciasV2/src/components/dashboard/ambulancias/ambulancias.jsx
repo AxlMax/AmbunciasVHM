@@ -41,6 +41,8 @@ function Ambulancias() {
         
         const data = await (await RambulanciasByuser(decodeUser['_id'], token)).data
         
+        console.log(data)
+
         if(data[0] == null){
             sList([])
         }else{
@@ -216,7 +218,9 @@ function Ambulancias() {
 
             {
                 list.length == 0 
-                    ? <h1>hola como estas</h1> 
+                    ?   <div>
+                            <img src="/no-data.png" class="img-fluid3"/>
+                        </div>
                     : list.map((v,i) => {
                         if(i >= index*num  && i < (index + 1)*num){
                             return <Card 
