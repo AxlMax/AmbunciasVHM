@@ -22,9 +22,12 @@
     flex-direction: column;
     position: fixed;
     width:50%;
-    height: 50%;
     animation-name: slideIn;
     animation-duration: 1s;
+  }
+
+  .modal-contentNClose {
+    display: None;
   }
   
   /* The Close Button */
@@ -64,12 +67,10 @@
   @keyframes slideIn {
     from { 
       width: 0%;
-      height: 0%;
       opacity: 0
     } 
     to {
       width: 50%;
-      height:50%;
       opacity: 1
     }
   }
@@ -90,7 +91,7 @@
   .titleInputForm{
     border-top-left-radius: 1vw;
     border-top-right-radius: 1vw;
-    background-color: rgb(69, 160, 235);
+    background-color: rgb(236, 135, 122);
     color:white;
     display: flex;
     text-align: center;
@@ -102,8 +103,9 @@
 
   .inputStyleForm{
     background-color:whitesmoke;
-    height: 6vh;
+    height: 3vh;
     border: none;
     border-bottom-left-radius: 1vw;
     border-bottom-right-radius: 1vw;
+    text-align: center;
   }

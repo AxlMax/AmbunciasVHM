@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 import useOnclickOutside from "react-cool-onclickoutside";
 
 import "./Global.css"
@@ -14,17 +15,28 @@ import "./Global.css"
 
 function MyModal(props) {
 
-    const {forwardedRef, title, Body, Footer} = props
+    const {forwardedRef, title, Body, Footer, type} = props
 
     const handleClose = () => forwardedRef.current.style.display = "none" 
     const ref = useOnclickOutside(handleClose);
+
+    const refHeader = useRef(null)
+
+    useEffect(()=> {
+
+        if(type == "delete"){
+            refHeader.current.style.backgroundColor = "rgb(236, 135, 122)"
+        }
+    },[])
+
+    
 
     return (<>
 
     <div id="myModal" class="modal" ref={forwardedRef}>
 
         <div class="modal-contentN" ref = {ref}>
-            <div class="modal-header">
+            <div class="modal-header" ref = {refHeader} backgroundColor="blue">
                 <h2>{title}</h2>
 
                 <span class="close" onClick={handleClose}>&times;</span>

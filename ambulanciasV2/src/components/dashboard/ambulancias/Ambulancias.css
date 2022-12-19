@@ -279,6 +279,7 @@ transition: 0.4s ease-out;
     position: absolute;
     top:5vh;
     left:42vw;
+
   }
 
   .plusButtonContainer{
@@ -332,18 +333,29 @@ transition: 0.4s ease-out;
   }
 
   .checkButtonContainer{
-    width:100%;
+    display:inline-flex;
+    width:50%;
     margin:1.25em;
   }
 
   .checkButtonStyle{
     background-color:rgb(117, 212, 88);
-    height: 40px;
+    height: 2.5em;
     border:none;
     color:white;
     padding: 1em;
     border-radius: 1vw;
-    margin-left: 80%;
+    margin-left: 30%;
+  }
+  .crossButtonStyle{
+    background-color:rgb(212, 88, 88);
+    height: 2.5em;
+    border:none;
+    color:white;
+    padding: 1em;
+    border-radius: 1vw;
+    margin-left: 30%;
+
   }
 
 

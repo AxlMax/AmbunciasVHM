@@ -1,5 +1,5 @@
 
-import { useRef} from "react";
+import {useRef} from "react";
 
 import MyModal from "../global/modal";
 
@@ -7,11 +7,15 @@ import "./Testing.css"
 
 function Testing() {
 
-    const childRef = useRef(null);
+    const childRef = useRef(null)
 
     const handleOpen = () => {
         childRef.current.style.display = "flex"
-    } 
+    }
+    
+    const submitHandler = () =>{
+        
+    }
 
     const Body = () =>  <>
             <p>Some text in the Modal Body</p>
@@ -19,6 +23,7 @@ function Testing() {
     </>
 
     const Footer = () => <>
+        <button onClick={submitHandler}>X</button>
         </>
     
   

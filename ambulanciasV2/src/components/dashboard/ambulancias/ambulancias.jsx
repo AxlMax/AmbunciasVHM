@@ -17,7 +17,8 @@ import InputForm from '../../global/inputForm';
 import range from '../../../../public/functions/generalFunctions';
 
 //servicios
-import RambulanciasByuser from '../../../services/user';
+import RambulanciasByuser, {linkAmbulancia} from '../../../services/user';
+import Cambulancia from '../../../services/ambulancias';
 
 // estilos css
 import "./Ambulancias.css"
@@ -33,11 +34,12 @@ function Ambulancias() {
     
     const [list, sList] = useState([])
 
-    const user = useSelector((state) => state.login)
+    const token = useSelector((state) => state.login).value
+    const decodeUser = jwtDecode(token).doc
 
     const asyncEffect = async() => {
-        const decodeUser = jwtDecode(user.value).doc
-        const data = await (await RambulanciasByuser(decodeUser['_id'], user.value)).data
+        
+        const data = await (await RambulanciasByuser(decodeUser['_id'], token)).data
         sList(data)
         
         const ambulanciasAux = []
@@ -61,14 +63,30 @@ function Ambulancias() {
     //******************************************************//
     // modal de creacion de ambulancias
 
-    const childRef = useRef(null)
+    const childRefC = useRef(null)
+    const [modalStyle, sModalStyle] = useState("modal-contentN")
 
-    const onSubmitForm = async(data) => {
-        console.log(data)
+    const onSubmitFormC = async(data) => {
+ 
+        sModalStyle("modal-contentNClose")
+        
+        const ambulancia = await (await Cambulancia(data, token)).data
+        
+        await linkAmbulancia(
+            decodeUser['_id'], 
+            ambulancia['_id'],
+            token
+        )
+
+        sRefreshList(!refreshList)
+  
+        childRefC.current.style.display = "none"
+        sModalStyle("modal-contentN")
+
     }
 
 
-    const Body = (register) =>  <>
+    const BodyC = (register) =>  <>
     
             <InputForm
                 title = {"placa"}
@@ -84,13 +102,14 @@ function Ambulancias() {
             
     </>
 
-    const Footer = () => <>
+    const FooterC = () => <>
                 <BotonIcon
                     Container     = {"checkButtonContainer"} 
                     botonStyle    = {"checkButtonStyle"}
                     icon          = {faCheck}
                     center        = {false}
                     buttonHandler = {() => {}}
+                    
                 />
         </>
 
@@ -148,7 +167,7 @@ function Ambulancias() {
                     botonStyle    = {"plusButton"}
                     icon          = {faPlus}
                     center        = {false}
-                    buttonHandler = {() => childRef.current.style.display = "flex"}
+                    buttonHandler = {() => childRefC.current.style.display = "flex"}
                 />
 
             </div>
@@ -168,13 +187,9 @@ function Ambulancias() {
                 }}
             />
                 {list.map((v,i) => {
-
-
                     if(i >= index*num  && i < (index + 1)*num){
                         return <Card placa = {v.placa} ubicacion = {v.ubicacion}/>
-                    }
-
-                    
+                    }  
                 })}
   
             <BotonIcon
@@ -208,13 +223,20 @@ function Ambulancias() {
             <Map/>
         </div>
 
+
+
         <ModalForm
-            forwardedRef={childRef} 
-            title = {"Crear Ambulancia"}
-            Body = {Body}
-            Footer = {Footer}
-            onSubmit = {onSubmitForm}
+            forwardedRef  ={childRefC} 
+            title         = {"Crear Ambulancia"}
+            Body          = {BodyC}
+            Footer        = {FooterC}
+            onSubmit      = {onSubmitFormC}
+            modalStyle    = {modalStyle}
         />
+
+        
+        
+       
 
 
        
