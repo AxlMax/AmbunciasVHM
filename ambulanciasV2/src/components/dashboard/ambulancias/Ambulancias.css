@@ -1,19 +1,16 @@
 
 .containerCardD {
-position: absolute;
-height: 30%;
-width: 80%;
-top: 10vh;
-display: flex;
-left:10%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+  
 }
 
 .cardD {
-height: 280px;
-width: 30vw;
 background-color: #17141d;
-border-radius: 10px;
-box-shadow: -1rem 0 3rem #000;
+border-radius: 0.625rem;
+
 /*   margin-left: -50px; */
 left:0%;
 transition: 0.4s ease-out;
@@ -26,26 +23,24 @@ position: relative;
 
 .cardD:hover {
 transform: translateY(-20px);
+box-shadow: -1rem 0 3rem #000;
 transition: 0.4s ease-out;
 }
 
 .cardD:hover ~ .cardD {
 position: relative;
-left: 7%;
+left: 3%;
 transition: 0.4s ease-out;
 }
 
 .cardD:hover ~ .finalButton {
     position: relative;
-    left: 7%;
+    left: 3%;
     transition: left 0.4s ease-out;
 }
 
 .finalButton{
-    margin-top: 10%;
-    display: relative;
-    height: 280px;
-    width: 15vw;
+
     border-radius: 10px;
     left:0%;
     transition: 0.4s ease-out;
@@ -54,7 +49,7 @@ transition: 0.4s ease-out;
 
 .paginationD {
     position: absolute;
-    top: 40%;
+    margin-top: 2vh;
     right: 0;
     left: 0%;
     transform: translateY(-50%);
@@ -63,12 +58,12 @@ transition: 0.4s ease-out;
   }
   
   .buttonD {
-    width: 15px;
-    height: 15px;
+    width: 0.625rem;
+    height: 0.625rem;
     float: left;
-    margin-right: 10px;
-    background-color: black;
-    border-radius: 15px;
+    margin-right: 0.625rem;
+    background-color: rgb(69, 160, 235);
+    border-radius: 0.625rem;
     cursor: pointer;
     transition: 0.3s ease width;
   }
@@ -78,16 +73,52 @@ transition: 0.4s ease-out;
   }
   
   .buttonD.active {
-    width: 30px;
+    width: 1.875rem;
     cursor: auto;
   }
 
   .placa {
-    color:white;
-    display: inline-block;
-    align-items: center;
-    margin-left: 3vw;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(225,200,53,255);
+    margin: 1vw;
+    border-radius: 0.2vw;
+    width: 10vw;
+  }
+
+  .bordePlaca{
+    border-style: solid;
+    border-width: 0.2vw;
+    background-color: rgba(225,200,53,255);
     width: 100%;
+    margin: 0.3vw;
+    border-radius: 0.2vw;
+    
+  }
+
+  .huecosPlacaL{
+    width: 0.6vw;
+    float: left;
+    height: 0.5vh;
+    background-color: black;
+    border-radius: 0.625rem;
+    cursor: pointer;
+    margin: 0.5vw;
+  }
+  .huecosPlacaR{
+    width: 0.6vw;
+    float: right;
+    height: 0.5vh;
+    background-color: black;
+    border-radius: 0.625rem;
+    cursor: pointer;
+    margin: 0.5vw;
+    display: block;
+  }
+
+  .letrasPlaca{
+    display: block;
+    text-align: center;
   }
 
   .botonCardContainer{
@@ -96,45 +127,35 @@ transition: 0.4s ease-out;
         grid-template-rows: 1fr;
         grid-column-gap: 0px;
         grid-row-gap: 0px; 
+        margin-top: 12vh;   
   }
 
-  .trashBoton{
-    grid-area: 1 / 1 / 2 / 2;
-    display: flex;
-    align-items: center;
-  }
 
   .trashBotonStyle{
-    align-items: center;
-    background-color:#17141d;;
+    background-color:#17141d;
     border-radius: 12px;
     box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
     box-sizing: border-box;
     color: #121212;
     cursor: pointer;
-    display: inline-flex;
     font-weight: 700;
     justify-content: center;
     line-height: 1;
     margin: 0;
     outline: none;
-    padding: 0.5rem 0.5rem;
-    text-align: center;
     text-decoration: none;
     border: 0;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
     border-radius: 40%;
+    margin-top: 0vh;
+    color:rgb(236, 65, 65);
+    float: left;
+    bottom: 0;
     margin-left: 1vw;
-    margin-top: 14vh;
-    color:rgb(236, 65, 65)
   }
 
-
-  .gearBoton{
-    grid-area: 1 / 2 / 2 / 3;
-  }
 
   .gearBotonStyle{
     align-items: center;
@@ -150,7 +171,6 @@ transition: 0.4s ease-out;
     line-height: 1;
     margin: 0;
     outline: none;
-    padding: 0.5rem 0.5rem;
     text-align: center;
     text-decoration: none;
     border: 0;
@@ -159,26 +179,192 @@ transition: 0.4s ease-out;
     touch-action: manipulation;
 
     border-radius: 40%;
-    margin-left: 5vw;
-    margin-top: 14vh;
-    color:rgb(238, 234, 11)
-  
+    margin-top: 0vh;
+    color:rgb(238, 234, 11);
+    float:right;
+    margin-right: 1vw;
   }
 
   .map{
     
     position: absolute;
     
-    height: 46vh;
-    width: 75vw;
-
-    top: 45%;
+    width: 85vw;
+    margin-top: 15vh;
     right: 0;
     left: 2%;
   }
 
+  .map.open{
+    position: absolute;
+    
+    width: 90vw;
+    margin-top: 15vh;
+    right: 0;
+    left: 2%;
+  }
+
+  .containerHeader{
+    width: 100%;
+    height: 10vh;
+  }
+
+  .containerSearch {
+    margin-top: 5vh;
+    margin-left: 5vh;    
+  }
+
+  .search{
+    float:left;
+    width: 25%;
+    border-top-left-radius: 1vw;
+    border-bottom-left-radius: 1vw;
+    height: 40px;
+    
+    background-color: whitesmoke;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    border:none;
+  }
+
+  .search:focus{
+    border:none;
+  }
+
+  .search::placeholder{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color:black
+  }
+
+  .searchButtonContainer{
+    margin:0;
+    width:20%;
+    display: inline-block;
+  }
+  .searchButton{
+    background-color:rgb(69, 160, 235);
+    height: 40px;
+    border:none;
+    width: 20%;
+    border-top-right-radius: 1vw;
+    border-bottom-right-radius: 1vw;
+  }
+
+  .items {
+    background-color: whitesmoke;
+    width:25%;
+    padding: 0.2vh;
+    display:block;
+    z-index: 2;
+  }
+
+  .items:hover{
+    background-color:white;
+    border-width:2px;
+  }
+
+  .refreshButton{
+    background-color:rgb(69, 160, 235);
+    height: 40px;
+    border:none;
+    width: 10%;
+    border-radius: 1vw;
+  }
+
+  .refreshButtonContainer{
+    margin:0;
+    width:40%;
+    position: absolute;
+    top:5vh;
+    left:42vw;
+
+  }
+
+  .plusButtonContainer{
+    margin:0;
+    position: absolute;
+    top:5vh;
+    left:80vw;
+  }
+
+  .plusButton{
+    background-color:rgb(117, 212, 88);
+    height: 40px;
+    border:none;
+    width: 200%;
+    border-radius: 1vw;
+  }
 
 
+  .inputFormContainer{
+    width:100%;
+    background-color:red;
+  }
+
+  .inputForm{
+    
+    display: inline-flex;
+    margin: 5%;
+    flex-direction: column;
+    width: 40%;
+  }
+
+  .titleInputForm{
+    border-top-left-radius: 1vw;
+    border-top-right-radius: 1vw;
+    background-color: rgb(69, 160, 235);
+    color:white;
+    display: flex;
+    text-align: center;
+    margin:0;
+    padding: 0.625rem;
+    flex-direction: column;
+    font-size: 1rem;
+  }
+
+  .inputStyleForm{
+    background-color:whitesmoke;
+    height: 6vh;
+    border: none;
+    border-bottom-left-radius: 1vw;
+    border-bottom-right-radius: 1vw;
+  }
+
+  .checkButtonContainer{
+    display:inline-flex;
+    width:50%;
+    margin:1.25em;
+  }
+
+  .checkButtonStyle{
+    background-color:rgb(117, 212, 88);
+    height: 2.5em;
+    border:none;
+    color:white;
+    padding: 1em;
+    border-radius: 1vw;
+    margin-left: 30%;
+  }
+  .crossButtonStyle{
+    background-color:rgb(212, 88, 88);
+    height: 2.5em;
+    border:none;
+    color:white;
+    padding: 1em;
+    border-radius: 1vw;
+    margin-left: 30%;
+
+  }
+
+  .img-fluid3{
+    max-width: 100%;
+    margin: 0.5em;
+    height: 50%;
+    margin-left:25%
+  }
 
 
 

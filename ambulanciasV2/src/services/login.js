@@ -1,10 +1,7 @@
 import axios from 'axios';
+import ServerApi from '../../public/contants/contantsService';
 
-const server = import.meta.env.VITE_SERVER
-const serverPort = import.meta.env.VITE_SERVERPORT
-
-
-const api_url = `http://${server}${serverPort}/api/login/oauth`
+const api_url = `${ServerApi}/login/oauth`
 
 const Oauth = async(body) => axios.post(api_url, body)
 

@@ -11,7 +11,7 @@ import {
     faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 import SideBarIcon from "./sideBarIcon";
-import BotonIcon from "./botonIcon";
+import BotonIcon from "../../global/botonIcon";
 
 import { Change } from "../../../storage/features/showSidebar/showSidebarSlice";
 
@@ -53,30 +53,24 @@ function SideBar() {
 
         <div className = "img">
             <img src="/logovhm.png" class="img-fluid2"/>
-            <hr/>
+            <div class = "divisor"/>
             <SideBarIcon 
-                label = {"ambulancias"} 
+                label = {""} 
                 icon = {faTruckMedical}
                 botonStyle = {"boton1"}
                 num = {1}
             />
             <SideBarIcon 
-                label = {"Hopitales"} 
+                label = {""} 
                 icon = {faHospital}
-                botonStyle = {"boton2"}
+                botonStyle = {"boton1"}
                 num = {2}
             />
             <SideBarIcon 
-                label = {"Gps"} 
-                icon = {faLocationDot}
-                botonStyle = {"boton3"}
-                num = {3}
-            />  
-            <SideBarIcon 
-                label = {"Conductores"} 
+                label = {""} 
                 icon = {faCar}
-                botonStyle = {"boton4"}
-                num = {4}
+                botonStyle = {"boton1"}
+                num = {3}
             />
 
             <BotonIcon

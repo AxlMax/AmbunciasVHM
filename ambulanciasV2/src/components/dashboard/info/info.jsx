@@ -14,7 +14,6 @@ function Info() {
            sInfo("Biginfo") 
 
         }
-        console.log(value)
     },[value])
 
     return (<>

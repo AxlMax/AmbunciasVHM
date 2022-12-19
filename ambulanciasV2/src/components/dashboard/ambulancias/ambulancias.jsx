@@ -1,100 +1,298 @@
 
-import { useEffect, useState} from 'react'
+//librerias
+import { useEffect, useState, useRef} from 'react'
 import { useSelector} from "react-redux";
-import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import jwtDecode from 'jwt-decode';
+import { faArrowRight, faArrowLeft, faArrowsRotate, faPlus, faCheck, faSliders } from "@fortawesome/free-solid-svg-icons";
 
-import BotonIcon from "../sideBar/botonIcon";
+//componentes
+import BotonIcon from "../../global/botonIcon";
 import Card from "./card";
 import Map from '../map';
+import AutoCompleteInput from './autoCompleteInput';
+import ModalForm from '../../global/modalForm';
+import InputForm from '../../global/inputForm';
 
+//funciones generales
+import range from '../../../../public/functions/generalFunctions';
+
+//servicios
+import RambulanciasByuser, {linkAmbulancia} from '../../../services/user';
+import Cambulancia, {Dambulancia} from '../../../services/ambulancias';
+
+// estilos css
 import "./Ambulancias.css"
 
 function Ambulancias() {
 
-    const ambulancias = ["AB345", "43RAS", "345DA", "432ECD", "233AS", 
-                        "223AS", "AB345", "43RAS", "AB345", "43RAS", 
-                        "345DA", "432ECD", "233AS", "223AS", "AB345", 
-                        "43RAS"]
+    //************************************************** */
+    // traer los valores de la base de datos
+
+    const [ambulancias, sAmbulancias] = useState([""])
+    const [ubicaciones, sUbicaciones] = useState([""])
+    const [refreshList, sRefreshList] = useState(false)
+    
+    const [list, sList] = useState([])
+
+    const token = useSelector((state) => state.login).value
+    const decodeUser = jwtDecode(token).doc
+
+    const asyncEffect = async() => {
+        
+        const data = await (await RambulanciasByuser(decodeUser['_id'], token)).data
+        
+        console.log(data)
+
+        if(data[0] == null){
+            sList([])
+        }else{
+            sList(data)
+
+            const ambulanciasAux = []
+            const ubicacionesAux = []
+    
+            data.map((v,i) => {
+                ambulanciasAux.push(v.placa)
+                ubicacionesAux.push(v.ubicacion)
+            })
+            
+            sAmbulancias(ambulanciasAux)
+            sUbicaciones(ubicacionesAux)
+        }        
+    } 
+    
+    useEffect(() => {
+
+        asyncEffect()
+
+    },[refreshList])
+    
+    //******************************************************//
+    // modal de creacion de ambulancias
+
+    const childRefC = useRef(null)
+    const [modalStyle, sModalStyle] = useState("modal-contentN")
+    
+    const [placaInput, sPlacaInput] = useState("") // variable que me permite limpiar los estados de los input del formulario
+    const [ubicacionInput, sUbicacionInput] = useState("")
+
+    const onSubmitFormC = async(data) => {
+ 
+        sModalStyle("modal-contentNClose")
+        
+        const ambulancia = await (await Cambulancia(data, token)).data
+        
+        await linkAmbulancia(
+            decodeUser['_id'], 
+            ambulancia['_id'],
+            token
+        )
+
+        sRefreshList(!refreshList)
+  
+        childRefC.current.style.display = "none"
+        sModalStyle("modal-contentN")
+
+    }
+
+
+    const BodyC = (register) =>  <>
+    
+            <InputForm
+                title = {"placa"}
+                register = {register}
+                registerName = {"placa"}
+                valueInput = {{
+                    "value"  : placaInput,
+                    "setter" : sPlacaInput
+                }}
+            />
+            
+            <InputForm
+                title = {"ubicación"}
+                register = {register}
+                registerName = {"ubicacion"}
+                valueInput = {{
+                    "value"  : ubicacionInput,
+                    "setter" : sUbicacionInput
+                }}
+            />
+            
+    </>
+
+    const FooterC = () => <>
+                <BotonIcon
+                    Container     = {"checkButtonContainer"} 
+                    botonStyle    = {"checkButtonStyle"}
+                    icon          = {faCheck}
+                    center        = {false}
+                    buttonHandler = {() => {}}
+                    
+                />
+        </>
+
+    //******************************************************//
+
+    // variables y es use efect para las animaciones 
 
     const {value} = useSelector((state) => state.sidebarShow)
-
-    const [num, sNum] = useState(4)
-    const [index, sIndex] = useState(0)
     
+    // numero de card segun el estado open o normal
+    const [num, sNum] = useState(4)
+    // index del paginador
+    
+
+    const [map, sMap] = useState("map")
+
     useEffect(()=> {
         if(value){
             sNum(4)
+            sMap("map")
         }else{
             sNum(6) 
+            sMap("map open")
 
         }
         
     },[value])
 
-    function range(start, end) {
-        var ans = [];
-        for (let i = start; i <= end; i++) {
-            ans.push(i);
-        }
-        return ans;
-    }
+    //******************************************************//
 
+    // variables del paginador
+
+    const [index, sIndex] = useState(0)
     const numAmbulacias = ambulancias.length
-
     const valuesPagination = range(0, Math.ceil(numAmbulacias/num) - 1)
 
+    //******************************************************//
+
     return (<>
-        
-        <div class="containerCardD">
-            <BotonIcon
-                Container     = {"finalButton"} 
-                botonStyle    = {"botonNext"}
-                icon          = {faArrowLeft}
-                buttonHandler = {() => {
-                    if(index != 0){
-                        sIndex(index - 1)
-                    }
-                }}
-            />
-                {ambulancias.map((v,i) => {
+        <div class = "containerHeader">
+            <div class = "containerSearch">
+               
+            <AutoCompleteInput list = {ambulancias} sListF = {sList}/>     
 
-                    if(i >= index*num  && i < (index + 1)*num){
-                        return <Card placa = {v}/>
-                    }
+                <BotonIcon
+                    Container     = {"refreshButtonContainer"} 
+                    botonStyle    = {"refreshButton"}
+                    icon          = {faArrowsRotate}
+                    center        = {false}
+                    buttonHandler = {() => sRefreshList(!refreshList)}
+                />
 
-                    
-                })}
-  
-            <BotonIcon
-                Container     = {"finalButton"} 
-                botonStyle    = {"botonNext"}
-                icon          = {faArrowRight}
-                buttonHandler = {() => {
-                    if(index < numAmbulacias/num - 1){
-                        sIndex(index + 1)
-                    } 
-                }}
-            />
-        </div>
+                <BotonIcon
+                    Container     = {"plusButtonContainer"} 
+                    botonStyle    = {"plusButton"}
+                    icon          = {faPlus}
+                    center        = {false}
+                    buttonHandler = {() => {
 
-        <div className="paginationD">
-            <div class = "d-flex justify-content-center">
+                        sUbicacionInput("")
+                        sPlacaInput("")
+                        childRefC.current.style.display = "flex"
 
-                {valuesPagination.map((v,i) => {
-                    if(i == index){
-                        return <div class="buttonD active"></div>
-                    }else{
-                        return <div class="buttonD" onClick={()=>{sIndex(i)}}></div>
-                    }
-                })}
+                    }}
+                />
 
             </div>
+
+        </div>
+        
+        
+        <div class="containerCardD">
+
+            {
+                list.length > 4 
+                    ? <BotonIcon
+                        Container     = {"finalButton"} 
+                        botonStyle    = {"botonNext"}
+                        icon          = {faArrowLeft}
+                        buttonHandler = {() => {
+                            if(index != 0){
+                                sIndex(index - 1)
+                            }
+                    }}/>
+                    : <></>
+            }
+
+
+            {
+                list.length == 0 
+                    ?   <div>
+                            <img src="/no-data.png" class="img-fluid3"/>
+                        </div>
+                    : list.map((v,i) => {
+                        if(i >= index*num  && i < (index + 1)*num){
+                            return <Card 
+                                        placa = {v.placa} 
+                                        ubicacion = {v.ubicacion} 
+                                        id = {v["_id"]}
+                                        refresh = {
+                                            {
+                                                "value" : refreshList,
+                                                "setter": sRefreshList
+                                            }
+                                        }
+                                    />
+                        }  
+                    })
+            }
+
+            {
+                list.length > 4 
+                    ?   <BotonIcon
+                            Container     = {"finalButton"} 
+                            botonStyle    = {"botonNext"}
+                            icon          = {faArrowRight}
+                            buttonHandler = {() => {
+                                if(index < numAmbulacias/num - 1){
+                                    sIndex(index + 1)
+                                } 
+                            }}
+                        />
+                    : <></>
+            }
+
         </div>
 
 
-        <div class = "map">
+        {
+            list.length > 4 
+                ?   <div className="paginationD">
+                        <div class = "d-flex justify-content-center">
+            
+                            {valuesPagination.map((v,i) => {
+                                if(i == index){
+                                    return <div class="buttonD active"></div>
+                                }else{
+                                    return <div class="buttonD" onClick={()=>{sIndex(i)}}></div>
+                                }
+                            })}
+            
+                        </div>
+                    </div>
+                : <></>
+        }
+
+
+        <div class = {map}>
             <Map/>
         </div>
+
+
+
+        <ModalForm
+            forwardedRef  ={childRefC} 
+            title         = {"Crear Ambulancia"}
+            Body          = {BodyC}
+            Footer        = {FooterC}
+            onSubmit      = {onSubmitFormC}
+            modalStyle    = {modalStyle}
+        />
+
+        
+        
+       
 
 
        
