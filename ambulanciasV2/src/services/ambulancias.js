@@ -17,4 +17,13 @@ const Cambulancia = async(body, token) => axios.post(
             }
         })
 
+const Dambulancia = async(id, token) => axios.delete(
+        `${api_url}/Dambulancia?id=${id}`,{
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+      })
+
 export default Cambulancia
+
+export {Dambulancia}

@@ -4,6 +4,8 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import ItemInput from './itemInput';
 import BotonIcon from "../../global/botonIcon";
 
+import {Dambulancia} from '../../../services/ambulancias';
+
 function AutoCompleteInput(props) {
 
     const {list, sListF} = props
@@ -45,7 +47,11 @@ function AutoCompleteInput(props) {
     botonStyle    = {"searchButton"}
     icon          = {faMagnifyingGlass}
     center        = {false}
-    buttonHandler   = {() => sListF([{"placa" : value}])}
+    buttonHandler   = {() => {
+        sValue("")
+        sListF([{"placa" : value}])
+    
+    }}
 
 />
 

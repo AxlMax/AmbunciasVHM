@@ -1,13 +1,28 @@
 import {useRef} from "react";
+import { useSelector} from "react-redux"
 
-import MyModal from "../../global/modal";
-import BotonIcon from "../../global/botonIcon";
-import { faTrash, faGear, faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
+import MyModal from "../../global/modal"
+import BotonIcon from "../../global/botonIcon"
+import { faTrash, faGear, faCheck, faXmark } from "@fortawesome/free-solid-svg-icons"
 
+import {Dambulancia} from '../../../services/ambulancias'
+
+/**
+ * 
+ * @param {*} props 
+ * @param {string} placa     placa de la ambulancia
+ * @param {string} ubicacion ubicacion de la ambulancia
+ * @param {string} id        id de la ambulancia
+ * @param {Object} refresh   me permite refrescar la lista de componentes
+ * 
+ * @returns una carta con los botones de eliminar editar y con informacion de la ambulancia
+ */
 function Card(props) {
 
-    const {placa, ubicacion} = props
+    const {placa, ubicacion, id, refresh} = props
 
+    const token = useSelector((state) => state.login).value
+    
     // modal para la eliminacion //
 
     const childRef = useRef(null)
@@ -31,7 +46,13 @@ function Card(props) {
                     botonStyle    = {"checkButtonStyle"}
                     icon          = {faCheck}
                     center        = {false}
-                    buttonHandler = {() => {}}
+                    buttonHandler = {async() => {
+
+                        await Dambulancia(id, token)
+                        childRef.current.style.display = "none"
+                        refresh.setter(!refresh.value)
+
+                    }}
                     
                 />
         </>

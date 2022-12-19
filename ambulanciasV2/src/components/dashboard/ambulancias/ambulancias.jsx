@@ -18,7 +18,7 @@ import range from '../../../../public/functions/generalFunctions';
 
 //servicios
 import RambulanciasByuser, {linkAmbulancia} from '../../../services/user';
-import Cambulancia from '../../../services/ambulancias';
+import Cambulancia, {Dambulancia} from '../../../services/ambulancias';
 
 // estilos css
 import "./Ambulancias.css"
@@ -40,18 +40,23 @@ function Ambulancias() {
     const asyncEffect = async() => {
         
         const data = await (await RambulanciasByuser(decodeUser['_id'], token)).data
-        sList(data)
         
-        const ambulanciasAux = []
-        const ubicacionesAux = []
+        if(data[0] == null){
+            sList([])
+        }else{
+            sList(data)
 
-        data.map((v,i) => {
-            ambulanciasAux.push(v.placa)
-            ubicacionesAux.push(v.ubicacion)
-        })
-        
-        sAmbulancias(ambulanciasAux)
-        sUbicaciones(ubicacionesAux)
+            const ambulanciasAux = []
+            const ubicacionesAux = []
+    
+            data.map((v,i) => {
+                ambulanciasAux.push(v.placa)
+                ubicacionesAux.push(v.ubicacion)
+            })
+            
+            sAmbulancias(ambulanciasAux)
+            sUbicaciones(ubicacionesAux)
+        }        
     } 
     
     useEffect(() => {
@@ -65,6 +70,9 @@ function Ambulancias() {
 
     const childRefC = useRef(null)
     const [modalStyle, sModalStyle] = useState("modal-contentN")
+    
+    const [placaInput, sPlacaInput] = useState("") // variable que me permite limpiar los estados de los input del formulario
+    const [ubicacionInput, sUbicacionInput] = useState("")
 
     const onSubmitFormC = async(data) => {
  
@@ -92,12 +100,20 @@ function Ambulancias() {
                 title = {"placa"}
                 register = {register}
                 registerName = {"placa"}
+                valueInput = {{
+                    "value"  : placaInput,
+                    "setter" : sPlacaInput
+                }}
             />
             
             <InputForm
                 title = {"ubicación"}
                 register = {register}
                 registerName = {"ubicacion"}
+                valueInput = {{
+                    "value"  : ubicacionInput,
+                    "setter" : sUbicacionInput
+                }}
             />
             
     </>
@@ -167,7 +183,13 @@ function Ambulancias() {
                     botonStyle    = {"plusButton"}
                     icon          = {faPlus}
                     center        = {false}
-                    buttonHandler = {() => childRefC.current.style.display = "flex"}
+                    buttonHandler = {() => {
+
+                        sUbicacionInput("")
+                        sPlacaInput("")
+                        childRefC.current.style.display = "flex"
+
+                    }}
                 />
 
             </div>
@@ -176,47 +198,77 @@ function Ambulancias() {
         
         
         <div class="containerCardD">
-            <BotonIcon
-                Container     = {"finalButton"} 
-                botonStyle    = {"botonNext"}
-                icon          = {faArrowLeft}
-                buttonHandler = {() => {
-                    if(index != 0){
-                        sIndex(index - 1)
-                    }
-                }}
-            />
-                {list.map((v,i) => {
-                    if(i >= index*num  && i < (index + 1)*num){
-                        return <Card placa = {v.placa} ubicacion = {v.ubicacion}/>
-                    }  
-                })}
-  
-            <BotonIcon
-                Container     = {"finalButton"} 
-                botonStyle    = {"botonNext"}
-                icon          = {faArrowRight}
-                buttonHandler = {() => {
-                    if(index < numAmbulacias/num - 1){
-                        sIndex(index + 1)
-                    } 
-                }}
-            />
+
+            {
+                list.length > 4 
+                    ? <BotonIcon
+                        Container     = {"finalButton"} 
+                        botonStyle    = {"botonNext"}
+                        icon          = {faArrowLeft}
+                        buttonHandler = {() => {
+                            if(index != 0){
+                                sIndex(index - 1)
+                            }
+                    }}/>
+                    : <></>
+            }
+
+
+            {
+                list.length == 0 
+                    ? <h1>hola como estas</h1> 
+                    : list.map((v,i) => {
+                        if(i >= index*num  && i < (index + 1)*num){
+                            return <Card 
+                                        placa = {v.placa} 
+                                        ubicacion = {v.ubicacion} 
+                                        id = {v["_id"]}
+                                        refresh = {
+                                            {
+                                                "value" : refreshList,
+                                                "setter": sRefreshList
+                                            }
+                                        }
+                                    />
+                        }  
+                    })
+            }
+
+            {
+                list.length > 4 
+                    ?   <BotonIcon
+                            Container     = {"finalButton"} 
+                            botonStyle    = {"botonNext"}
+                            icon          = {faArrowRight}
+                            buttonHandler = {() => {
+                                if(index < numAmbulacias/num - 1){
+                                    sIndex(index + 1)
+                                } 
+                            }}
+                        />
+                    : <></>
+            }
+
         </div>
 
-        <div className="paginationD">
-            <div class = "d-flex justify-content-center">
 
-                {valuesPagination.map((v,i) => {
-                    if(i == index){
-                        return <div class="buttonD active"></div>
-                    }else{
-                        return <div class="buttonD" onClick={()=>{sIndex(i)}}></div>
-                    }
-                })}
-
-            </div>
-        </div>
+        {
+            list.length > 4 
+                ?   <div className="paginationD">
+                        <div class = "d-flex justify-content-center">
+            
+                            {valuesPagination.map((v,i) => {
+                                if(i == index){
+                                    return <div class="buttonD active"></div>
+                                }else{
+                                    return <div class="buttonD" onClick={()=>{sIndex(i)}}></div>
+                                }
+                            })}
+            
+                        </div>
+                    </div>
+                : <></>
+        }
 
 
         <div class = {map}>
