@@ -1,44 +1,56 @@
 
-import {useRef} from "react";
+  import React from 'react';
 
-import MyModal from "../global/modal";
-
-import "./Testing.css"
-
-function Testing() {
-
-    const childRef = useRef(null)
-
-    const handleOpen = () => {
-        childRef.current.style.display = "flex"
-    }
-    
-    const submitHandler = () =>{
-        
-    }
-
-    const Body = () =>  <>
-            <p>Some text in the Modal Body</p>
-            <p>Some other text...</p>
-    </>
-
-    const Footer = () => <>
-        <button onClick={submitHandler}>X</button>
-        </>
-    
+  import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
   
-    return (<>
-    <h2>Bottom Modal</h2>
+    import "./Testing.css"
 
-        <button id="myBtn" onClick={handleOpen}>Open Modal</button>
+  function Testing(){
+    const notify = () => toast.success('🦄 Wow so easy!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+        });
 
-        <MyModal 
-            forwardedRef={childRef} 
-            title = {"Modal Header"}
-            Body = {Body}
-            Footer = {Footer}
-        />
-    </>
-);
-}
+    return (
+        <>
+            <div class = "scroll">
+                <div class = "itemscroll">0</div>
+                <div class = "itemscroll">0</div>
+                <div class = "itemscroll">0</div>
+                <div class = "itemscroll">0</div>
+                <div class = "itemscroll">0</div>
+                <div class = "itemscroll">0</div>
+                <div class = "itemscroll">0</div>
+                <div class = "itemscroll">0</div>
+                <div class = "itemscroll">0</div>
+                <div class = "itemscroll">0</div>
+                <div class = "itemscroll">0</div>
+                <div class = "itemscroll">0</div>
+                <div class = "itemscroll">0</div>
+                <div class = "itemscroll">0</div>
+                <div class = "itemscroll">0</div>
+                <div class = "itemscroll">0</div>
+                <div class = "itemscroll">0</div>
+                <div class = "itemscroll">0</div>
+                <div class = "itemscroll">0</div>
+                <div class = "itemscroll">0</div>
+                <div class = "itemscroll">0</div>
+                <div class = "itemscroll">0</div>
+                <div class = "itemscroll">0</div>
+                <div class = "itemscroll">0</div>
+                
+            </div>
+        </>
+
+
+    );
+  }
+
 export default Testing;

@@ -4,6 +4,7 @@ import { useEffect, useState, useRef} from 'react'
 import { useSelector} from "react-redux";
 import jwtDecode from 'jwt-decode';
 import { faArrowRight, faArrowLeft, faArrowsRotate, faPlus, faCheck, faSliders } from "@fortawesome/free-solid-svg-icons";
+import { ToastContainer, toast } from 'react-toastify';
 
 //componentes
 import BotonIcon from "../../global/botonIcon";
@@ -39,10 +40,12 @@ function Ambulancias() {
     const decodeUser = jwtDecode(token).doc
 
     const asyncEffect = async() => {
-        
+
+        console.log("entre")
+        console.log(refreshList)
         const data = await (await RambulanciasByuser(decodeUser['_id'], token)).data
         
-        
+        console.log(data)
 
         if(data[0] == null){
             sList([])
@@ -56,14 +59,10 @@ function Ambulancias() {
                 ambulanciasAux.push(v.placa)
                 ubicacionesAux.push(v.ubicacion)
 
-                console.log(v["_id"])
-
                 const gps = await (await RgpsByambulancia(v["_id"],token)).data
                 sGpsArray(...gpsArray, gps)
 
             })
-
-            console.log(gpsArray)
             
             sAmbulancias(ambulanciasAux)
             sUbicaciones(ubicacionesAux)
@@ -89,15 +88,45 @@ function Ambulancias() {
  
         sModalStyle("modal-contentNClose")
         
-        const ambulancia = await (await Cambulancia(data, token)).data
-        
-        await linkAmbulancia(
-            decodeUser['_id'], 
-            ambulancia['_id'],
-            token
-        )
 
-        sRefreshList(!refreshList)
+        try{
+            
+            const ambulancia = await (await Cambulancia(data, token)).data
+            
+            await linkAmbulancia(
+                decodeUser['_id'], 
+                ambulancia['_id'],
+                token
+            )
+
+            toast.success('🚑 Ambulancia creada', {
+                position: "top-right",
+                autoClose: 900,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "light",
+            });
+
+        }catch{
+            toast.error('❌ error', {
+                position: "top-right",
+                autoClose: 900,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "light",
+            });
+        }
+
+        
+        console.log(refreshList)
+        sRefreshList(value => !value)
+        console.log(refreshList)
   
         childRefC.current.style.display = "none"
         sModalStyle("modal-contentN")
@@ -207,9 +236,7 @@ function Ambulancias() {
 
         </div>
         
-        
         <div class="containerCardD">
-
             {
                 list.length > 4 
                     ? <BotonIcon
@@ -223,7 +250,6 @@ function Ambulancias() {
                     }}/>
                     : <></>
             }
-
 
             {
                 list.length == 0 
@@ -285,7 +311,12 @@ function Ambulancias() {
 
 
         <div class = {map}>
-            <Map gps = {gpsArray}/>
+            {
+                list.length > 0 
+                ?   <Map gps = {gpsArray}/>
+                : <></>
+            }
+            
         </div>
 
 
@@ -298,6 +329,9 @@ function Ambulancias() {
             onSubmit      = {onSubmitFormC}
             modalStyle    = {modalStyle}
         />
+
+
+        <ToastContainer/>
     </>);
 }
 

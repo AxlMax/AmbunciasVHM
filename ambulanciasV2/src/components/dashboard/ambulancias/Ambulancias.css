@@ -255,7 +255,6 @@ transition: 0.4s ease-out;
 
   .items {
     background-color: whitesmoke;
-    width:25%;
     padding: 0.2vh;
     display:block;
     z-index: 2;
@@ -364,6 +363,18 @@ transition: 0.4s ease-out;
     margin: 0.5em;
     height: 50%;
     margin-left:25%
+    
+  }
+
+  .scrollN{
+    display:block;
+    box-sizing: border-box;
+    height: 90px;
+    width: 25%;
+    overflow-y: scroll;
+    border: none;
+    border-bottom-left-radius: 1vw;
+    border-bottom-right-radius: 1vw;
   }
 
 

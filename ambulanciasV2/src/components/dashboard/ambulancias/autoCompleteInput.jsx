@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 import ItemInput from './itemInput';
@@ -14,6 +14,7 @@ function AutoCompleteInput(props) {
 
     const [show, sShow] = useState(false)
 
+    const ref = useRef(null)
 
     const handleInput = (event) => {
         const msg = event.target.value
@@ -27,8 +28,16 @@ function AutoCompleteInput(props) {
             }
         })
 
-        sList(volatileList)
+        if(msg == ""){
+            sList([])
+            ref.current.style.display = "none"
+        }else{
+            sList(volatileList)
+        }
 
+        if(volatileList.length != 0 && msg != ""){
+            ref.current.style.display = "block"
+        }
     }
 
     if(show == true){
@@ -36,26 +45,41 @@ function AutoCompleteInput(props) {
         sShow(false)
     }
 
+    useEffect(()=> {
+        ref.current.style.display = "none"
+    },[])
+
     return (<>
             
             <input class = "search" placeholder='@search' onChange={handleInput} value={value}></input>
 
-<BotonIcon
-    Container     = {"searchButtonContainer"} 
-    botonStyle    = {"searchButton"}
-    icon          = {faMagnifyingGlass}
-    center        = {false}
-    buttonHandler   = {() => {
-        sValue("")
-        sListF([{"placa" : value}])
-    
-    }}
+            <BotonIcon
+            Container     = {"searchButtonContainer"} 
+            botonStyle    = {"searchButton"}
+            icon          = {faMagnifyingGlass}
+            center        = {false}
+            buttonHandler   = {() => {
 
-/>
+                const flag = list.find(element => element == value)
 
-{List.map((v,i) => <ItemInput contenido = {v} sValue = {sValue} sShow = {sShow}/>)}
+                if(flag != undefined){
+                    sListF([{"placa" : value}])    
+                }else{
+                    sListF([])  
+                }
 
-    
+                sValue("")
+            }}
+
+            />
+
+            <div class = "scrollN" ref = {ref}>
+                {List.map((v,i) => <ItemInput 
+                                        contenido = {v} 
+                                        sValue = {sValue} 
+                                        sShow = {sShow}
+                                    />)}
+            </div>
     </>);
 }
 

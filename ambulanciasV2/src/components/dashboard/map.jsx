@@ -6,8 +6,6 @@ function Map(props) {
 
     const {gps} = props
 
-    console.log(gps)
-
     const mapApi = import.meta.env.VITE_GOOGLE_API
 
     const mapStyles = {        
