@@ -129,6 +129,7 @@ function LoginBody(props) {
 
         </div>
         <ToastContainer/>
+        </div>
     </>;
 }
 
