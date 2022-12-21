@@ -1,41 +1,39 @@
 .Dashboard {
     margin: 0;
-    
-    
     min-height: 100vh;
-    background-color:#e0e0e0;
-    font-size: 16px;
-    
     display: grid;
     grid-template-columns: 0.5fr repeat(4, 1fr);
     grid-template-rows: 0.5fr repeat(4, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+    font-size: 16px;
 }
 
 .dashboardContainer{
   margin: 0;
-    
-    
+  background: linear-gradient(#7c7c7c, #02073c);
   min-height: 100vh;
   background-color:#e0e0e0;
   font-size: 16px;
-
+  translate: 0 -10px;
 }
 
+/* Barra de botones */
 .sidebar {
-    position : absolute;
-    left: -7vw;
-    width: 6vw;
+  translate: 0 20px;
+    position : relative;
+    left: 4vw;
+    width: 10vw;
     transition: left 1s ease-in-out;
-    background-color: #8293EB;
-    margin-top: 1.25rem;
+    background-color: #190046;
+    margin-top: 0.25rem;
     margin-bottom: 7.5rem;
     border-radius: 1rem;
     opacity: 90%;
-    margin-top:12%;
+    z-index: 2;
   }
 
+  /* efecto de apertura de la barra de botones */
   .sidebar.open {
     left: 2vw;
     border-radius: 1rem;
@@ -89,6 +87,8 @@
 
 
 .img {
+  translate: 0px 10px;
+    margin-top: 10px;
     grid-area: 1 / 1 / 2 / 2;  
 }
 
@@ -105,18 +105,20 @@ div.divisor{
   margin-top: 1vh;
 }
 
-
+/* Botones de la barra morada */
 .ContainerBoton{
     display:flex;
+    width: 100%;
     place-items: center;
 }
 
 .boton1 {
 
-  background-color: #8293EB;
+  border-radius: 10rem;
+  background-color: #c6c2ed;
 
   box-sizing: border-box;
-  color: #e0e0e0;
+  color: #0b0a0a;
   cursor: pointer;
 
   font-family: Inter,sans-serif;
@@ -128,14 +130,14 @@ div.divisor{
   transition: box-shadow .2s,-webkit-box-shadow .2s;
 
   border: 0;
-  margin: 1vh;
+  margin: 0.5vh;
   top : 5vh;
   height: 5vh;
-  width: 100px;
+  width: 100%;
 }
 
 .boton1:focus{
-  color:black;
+  color:rgb(255, 243, 243);
   width: 100%;
 }
 
@@ -295,6 +297,5 @@ div.divisor{
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-
 }
 

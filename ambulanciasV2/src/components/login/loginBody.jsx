@@ -74,14 +74,26 @@ function LoginBody(props) {
     }
 
     return <>
-        <div class="container">
-            <div class="row g-1">
-                <div class="col">
+    <div class="background">
+        {/* Contenedor total de los modulos */}
+        <div class="container container--flex">
+
+            <div class="column column--50">
+
+                <div class="column column--50-25">
                     <div className = "image">
-                        <img src="/tracking.png" class="img-fluid"/>
+                        <img src="/BeCityBackGround.png" class="img-fluid"/>
                     </div>
                 </div>
-                <div class="col">
+
+                <div class="column column--50-25">
+                    <div className ="image">
+                            <img src="/tracking.png" class="img-fluid"/>
+                    </div>
+                </div>
+            </div>
+
+                <div class="column column--50">
                 <Form   className = "formLogin" onSubmit={handleSubmit(onSubmit)}>
     
                     <div className="containerInput">
@@ -96,25 +108,25 @@ function LoginBody(props) {
                         <FontAwesomeIcon icon={faKey} className="mb-2"/>
                         </div>
                         <input className = "inputLogin" placeholder='@contraseña' type = {password} {...register("passwd") }></input>
+                    
                     </div> 
 
-                   
                     <input type="checkbox" value="" className='containerCheckbox' onChange={showPass}/>
-                        <label className = "ContainerLabel">
-                            mostrar contraseña
-                        </label>
+                    <label className = "ContainerLabel">
+                        mostrar contraseña
+                    </label>
 
-                    <div className = "buttonContainerLogin">
-                        <div class = "d-flex justify-content-center">
-                            <button type="submit" className = "buttonLogin">ingresar</button>
-                        </div>
-                        <div class = "d-flex justify-content-center">
-                            <button className = "buttonRegister">registrarse</button>
-                        </div>
+                    <div class="container--flex">
+                            <div className = "column column--50_button">
+                                <button type="submit" className = "buttonLogin">ingresar</button>
+                            </div>
+                            <div className = "column column--50_button">
+                                <button className = "buttonRegister">registrarse</button>
+                            </div>
                     </div>
                 </Form>
-                </div>
             </div>
+
         </div>
         <ToastContainer/>
     </>;
