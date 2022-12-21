@@ -10,7 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import BotonIcon from "../../global/botonIcon";
 import Card from "./card";
 import Map from '../map';
-import AutoCompleteInput from './autoCompleteInput';
+import AutoCompleteInput from '../../global/autoCompleteInput';
 import ModalForm from '../../global/modalForm';
 import InputForm from '../../global/inputForm';
 
@@ -101,7 +101,7 @@ function Ambulancias() {
 
             toast.success('🚑 Ambulancia creada', {
                 position: "top-right",
-                autoClose: 900,
+                autoClose: 1500,
                 hideProgressBar: false,
                 closeOnClick: false,
                 pauseOnHover: false,
@@ -111,9 +111,9 @@ function Ambulancias() {
             });
 
         }catch{
-            toast.error('❌ error', {
+            toast.error('❌ upsss un error', {
                 position: "top-right",
-                autoClose: 900,
+                autoClose: 1500,
                 hideProgressBar: false,
                 closeOnClick: false,
                 pauseOnHover: false,
@@ -215,6 +215,7 @@ function Ambulancias() {
                     botonStyle    = {"refreshButton"}
                     icon          = {faArrowsRotate}
                     center        = {false}
+                    tooltip       = {"refrescar ambulancia"}
                     buttonHandler = {() => sRefreshList(!refreshList)}
                 />
 
@@ -223,6 +224,7 @@ function Ambulancias() {
                     botonStyle    = {"plusButton"}
                     icon          = {faPlus}
                     center        = {false}
+                    tooltip       = {"crear ambulancia"}
                     buttonHandler = {() => {
 
                         sUbicacionInput("")

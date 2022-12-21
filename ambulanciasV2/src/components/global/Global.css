@@ -109,3 +109,85 @@
     border-bottom-right-radius: 1vw;
     text-align: center;
   }
+
+
+  .search{
+    float:left;
+    width: 25%;
+    border-top-left-radius: 1vw;
+    border-bottom-left-radius: 1vw;
+    height: 40px;
+    
+    background-color: whitesmoke;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    border:none;
+  }
+
+  .search:focus{
+    border:none;
+  }
+
+  .search::placeholder{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color:black
+  }
+
+  .searchButtonContainer{
+    margin:0;
+    width:20%;
+    position: absolute;
+    left:28%;
+  }
+
+  .searchButton{
+    background-color:rgb(69, 160, 235);
+    height: 40px;
+    border:none;
+    border-top-right-radius: 1vw;
+    border-bottom-right-radius: 1vw;
+    width:20%
+  }
+
+  .items {
+    background-color: whitesmoke;
+    padding: 0.2vh;
+    display:block;
+    z-index: 2;
+  }
+
+  .items:hover{
+    background-color:white;
+    border-width:2px;
+  }
+
+  .tooltiptext {
+    margin-top: 1vh;
+    padding: 1vh;
+    display: none;
+    width: 30%;
+    background-color: whitesmoke;
+    color: black;
+
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    position: absolute;
+    z-index: 1;
+    font-size: 11px;
+
+    animation-name: fadeIn;
+    animation-duration: 1s;
+
+  }
+
+  .botonIconContainer{
+    width:100%;
+  }
+
+  .botonIconContainer:hover .tooltiptext {
+    display:block;
+  }

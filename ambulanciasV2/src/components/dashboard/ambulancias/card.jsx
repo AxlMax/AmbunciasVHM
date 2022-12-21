@@ -6,6 +6,7 @@ import BotonIcon from "../../global/botonIcon"
 import { faTrash, faGear, faCheck, faXmark } from "@fortawesome/free-solid-svg-icons"
 
 import {Dambulancia} from '../../../services/ambulancias'
+import { ToastContainer, toast } from 'react-toastify';
 
 /**
  * 
@@ -48,7 +49,33 @@ function Card(props) {
                     center        = {false}
                     buttonHandler = {async() => {
 
-                        await Dambulancia(id, token)
+                        try{
+                            await Dambulancia(id, token)
+
+                            toast.success('🚑 Ambulancia eliminada', {
+                                position: "top-right",
+                                autoClose: 1500,
+                                hideProgressBar: false,
+                                closeOnClick: false,
+                                pauseOnHover: false,
+                                draggable: false,
+                                progress: undefined,
+                                theme: "light",
+                            })
+
+                        }catch{
+                            toast.error('❌ upsss un error', {
+                                position: "top-right",
+                                autoClose: 1500,
+                                hideProgressBar: false,
+                                closeOnClick: false,
+                                pauseOnHover: false,
+                                draggable: false,
+                                progress: undefined,
+                                theme: "light",
+                            })
+                        }
+
                         childRef.current.style.display = "none"
                         refresh.setter(!refresh.value)
 
@@ -102,6 +129,8 @@ function Card(props) {
                 Footer       = {Footer}
                 type         = {"delete"}
             />
+
+            <ToastContainer/>
     </>);
 }
 

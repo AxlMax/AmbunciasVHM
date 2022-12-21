@@ -214,68 +214,17 @@ transition: 0.4s ease-out;
     margin-left: 5vh;    
   }
 
-  .search{
-    float:left;
-    width: 25%;
-    border-top-left-radius: 1vw;
-    border-bottom-left-radius: 1vw;
-    height: 40px;
-    
-    background-color: whitesmoke;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    border:none;
-  }
-
-  .search:focus{
-    border:none;
-  }
-
-  .search::placeholder{
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color:black
-  }
-
-  .searchButtonContainer{
-    margin:0;
-    width:20%;
-    display: inline-block;
-  }
-  .searchButton{
-    background-color:rgb(69, 160, 235);
-    height: 40px;
-    border:none;
-    width: 20%;
-    border-top-right-radius: 1vw;
-    border-bottom-right-radius: 1vw;
-  }
-
-  .items {
-    background-color: whitesmoke;
-    padding: 0.2vh;
-    display:block;
-    z-index: 2;
-  }
-
-  .items:hover{
-    background-color:white;
-    border-width:2px;
-  }
-
   .refreshButton{
     background-color:rgb(69, 160, 235);
     height: 40px;
     border:none;
-    width: 10%;
+    width: 20%;
     border-radius: 1vw;
   }
 
   .refreshButtonContainer{
     margin:0;
-    width:40%;
+    width:20%;
     position: absolute;
     top:5vh;
     left:42vw;
@@ -284,6 +233,7 @@ transition: 0.4s ease-out;
 
   .plusButtonContainer{
     margin:0;
+    width:20%;
     position: absolute;
     top:5vh;
     left:80vw;
@@ -293,8 +243,8 @@ transition: 0.4s ease-out;
     background-color:rgb(117, 212, 88);
     height: 40px;
     border:none;
-    width: 200%;
     border-radius: 1vw;
+    width:20%;
   }
 
 
