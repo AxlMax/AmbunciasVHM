@@ -6,8 +6,14 @@ import SideBar from "./sideBar/sideBar";
 import Map from "./map";
 import Info from "./info/info";
 
-import "./dashboard.css"
 import Ambulancias from "./ambulancias/ambulancias";
+import Gps from "./gps/gps";
+import Conductores from "./conductores/conductores";
+
+import "./dashboard.css"
+
+
+
 
 function Dashboard() {
 
@@ -16,10 +22,30 @@ function Dashboard() {
     const [space, sSpace] = useState("")
     const {value} = useSelector((state) => state.login)
     const  show = useSelector((state) => state.sidebarShow.value)
+    const  spaceView = useSelector((state) => state.space.value)
+
+    console.log(spaceView)
+
+    const handlerSpace = () => {
+        if(spaceView <= 1){
+            return <Ambulancias/>
+        }
+        if(spaceView == 2){
+            return <Gps/>
+        }
+        if(spaceView == 3){
+            return <Conductores/>
+        }
+    }
 
     useEffect(()=> {
-        if(value == "" || value == null){
-            navigateTo("/login") 
+
+        const login = import.meta.env.VITE_LOGIN
+
+        if(login != 'false'){
+            if(value == "" || value == null){
+                navigateTo("/login") 
+            }
         }
 
         if(show){
@@ -34,7 +60,7 @@ function Dashboard() {
        <Info/>
        <SideBar/>
        <div className = {space}>
-            <Ambulancias/>            
+            {handlerSpace()}            
        </div>
         
     </div>
