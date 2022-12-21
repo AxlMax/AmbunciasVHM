@@ -316,16 +316,6 @@ transition: 0.4s ease-out;
     
   }
 
-  .scrollN{
-    display:block;
-    box-sizing: border-box;
-    height: 90px;
-    width: 25%;
-    overflow-y: scroll;
-    border: none;
-    border-bottom-left-radius: 1vw;
-    border-bottom-right-radius: 1vw;
-  }
 
 
 

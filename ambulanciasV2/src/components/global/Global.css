@@ -116,7 +116,7 @@
     width: 25%;
     border-top-left-radius: 1vw;
     border-bottom-left-radius: 1vw;
-    height: 40px;
+    height: 3vh;
     
     background-color: whitesmoke;
     display: flex;
@@ -140,12 +140,12 @@
     margin:0;
     width:20%;
     position: absolute;
-    left:28%;
+    left:30%;
   }
 
   .searchButton{
     background-color:rgb(69, 160, 235);
-    height: 40px;
+    height: 3vh;
     border:none;
     border-top-right-radius: 1vw;
     border-bottom-right-radius: 1vw;
@@ -163,6 +163,19 @@
     background-color:white;
     border-width:2px;
   }
+
+  .scrollN{
+    position:absolute;
+    top:8vh;
+    box-sizing: border-box;
+    height: 5vh;
+    width: 25%;
+    overflow-y: scroll;
+    border: none;
+    border-bottom-left-radius: 1vw;
+    border-bottom-right-radius: 1vw;
+  }
+
 
   .tooltiptext {
     margin-top: 1vh;
