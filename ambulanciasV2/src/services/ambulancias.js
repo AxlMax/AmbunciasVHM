@@ -24,6 +24,14 @@ const Dambulancia = async(id, token) => axios.delete(
           }
       })
 
+const RgpsByambulancia = async(id, token) => axios.get(
+      `${api_url}/RgpsByambulancia?idc=63a046ddba8de3ce8815b78e`,{
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+    } 
+)
+
 export default Cambulancia
 
-export {Dambulancia}
+export {Dambulancia, RgpsByambulancia}

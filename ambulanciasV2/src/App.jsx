@@ -6,6 +6,7 @@ import Dashboard from './components/dashboard/dashboard';
 import Testing from "./components/testing/testing";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 

@@ -8,6 +8,8 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from 'react-redux';
 import {OauthSlice} from '../../storage/features/login/loginSlice';
 
+import { ToastContainer, toast } from 'react-toastify';
+
 import Oauth from "../../services/login"
 
 function LoginBody(props) {
@@ -34,7 +36,21 @@ function LoginBody(props) {
     const onSubmit = async(data) => {
 
         sl(true)
-        var res = await (await Oauth(data)).data
+        try{
+            var res = await (await Oauth(data)).data
+        }catch{
+            toast.error('❌ upsss un error', {
+                position: "top-right",
+                autoClose: 1500,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "light",
+            });
+        }
+        
         sl(false)
 
         if(res !== 'no puede ingresar'){
@@ -44,7 +60,16 @@ function LoginBody(props) {
             navigateTo('/dashboard')
 
         }else{
-            alert('usuario incorrecto')
+            toast.warning('Usuario o contraseña incorretas', {
+                position: "top-right",
+                autoClose: 1500,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "light",
+            });
         }
     }
 
@@ -103,7 +128,7 @@ function LoginBody(props) {
             </div>
 
         </div>
-    </div>
+        <ToastContainer/>
     </>;
 }
 
