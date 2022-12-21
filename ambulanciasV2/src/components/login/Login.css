@@ -2,62 +2,109 @@
   margin: 0 auto;
 }
 
+/* Configuración de la sectorización por cajas */
+*{
+  box-sizing: border-box;
+ }
+
 .App {
-  margin: 0;
-  display: flex;
-  place-items: center;
- 
+  margin: 0px;
+  place-items: center center;
+  width: 100%;
   min-height: 100vh;
-
-  background: linear-gradient(#0f0f0f, #9198e5);
-
+  /* background: linear-gradient(#18040e, #bb1fd6); */
+  background-color: black;
   font-size: 16px;
+}
+
+.background{
+  position: absolute;
+  background-image: url(../../../public/background_2.jpg);
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
 
 }
 
+.background::before{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 1;
+  top: 0;
+}
+
 .formLogin{
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgb(243, 245, 255);
   font-size: 2rem;
-  width: 30vw;
+  max-width: 100%;
   text-align: center;
   border-radius: 1.875rem 1.875rem;
-  padding:0.625rem;
+  padding:0.9rem;
+  border: 15px solid #c6c2ed;
+  z-index: 2;
 }
 
 .inputLogin{
   background-color: transparent;
   border: 0;
-  border-bottom: 0.125em rgb(3, 3, 3) solid;
-  width: 80%;
+  border-bottom: 0.125em #c6c2ed solid;
+  width: 100%;
   font-size: 1.5rem;
   border-radius: 0.4rem;
   color: black;
+  text-align: center;
 }
 
 .inputLogin::placeholder{
   padding-left: 0.625em;
-  color:black
+  color: #c6c2ed solid;
 }
 
 .inputLogin:hover{
-  background-color: #9198e5;
+  background-color: #c6c2ed;
 }
 
 .image{
-  width: 40vw;
+  display: block;
+  margin: auto;
+  width: 100%;
+  max-width: 100%;
+  position: center center;
+
 }
 
 .img-fluid {
   max-width: 100%;
-  height: 50vh;
+  height: 5vh;
+}
+
+.container {
+  width: 100%;
+
+}
+
+.container--flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.column{
+  width: 100%;
+  z-index: 2;
 }
 
 .containerInput{
-  margin: 1.5em;
+  margin: 0.5em;
 }
 
 .ContainerLabel{
   font-size:1rem;
+  width: 40%;
 }
 
 .containerCheckbox{
@@ -65,9 +112,8 @@
     height: 0.5em;
     margin: 0.5em;
     background-color: rgb(243, 243, 243);
-    background-repeat: no-repeat;
     background-position: center;
-    border: 1px solid rgba(0,0,0,.25);
+    border: 1px #c6c2ed solid;
 }
 
 .buttonContainerLogin{
@@ -79,32 +125,137 @@
 }
 
 .buttonLogin{
-  background-color: black;
-  color: white;
+  background-color: #c3deff;
+  color: rgb(0, 0, 0);
   font-size: 1rem;
   padding: 0.2em;
   margin-top: 1em;
   border-radius: 0.625rem;
   cursor: pointer;
-  width : 70%;
-  grid-area: 1 / 2 / 2 / 3;
+  width : 90%;
+  /* grid-area: 1 / 2 / 2 / 3; */
+  border-color: #c3deff;
 }
 
 .buttonRegister { 
-  background-color: black;
-  color: white;
+  background-color: #c3deff;
+  color: rgb(0, 0, 0);
   font-size: 1rem;
   padding: 0.2em;
   margin-top: 1em;
   border-radius: 0.625rem;
   cursor: pointer;
-  width : 70%;
-  grid-area: 1 / 1 / 2 / 2;
+  width : 90%;
+  /* grid-area: 1 / 1 / 2 / 2; */
+  border-color: #c3deff;
 }
 
 
+@media screen and (min-width: 200px) {
+  
+  .column--50-25{
+      width: 100%;
+    }
 
+  .column--50{
+    width: 100%;
+    display: flex;
+  }
 
+  .image{
+    width: 100%;
+    max-height: 20%;
+  }
+  
+  .formLogin{
+    width: 100%;
+  }
 
+  .container{
+    padding-top: 50px;
+  }
 
+}
 
+/* Tamaños de smartphone 7" */
+@media screen and (min-width: 480px) {
+
+  .column--50-25{
+    width: 50%;
+  }
+
+  .column--50{
+    width: 100%;
+  }
+  
+  .image{
+    width: 100%;
+    margin: auto;
+  }
+
+}
+
+/* Pantalla tables */
+@media screen and (min-width: 768px) {
+  
+  .column--50_button{
+    width: 50%;
+  }
+
+  .column--50-25{
+    width: 100%;
+  }
+
+  .column--50{
+    width: 50%;
+    
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .image{
+    width: 80%;
+  }
+}
+
+/* Pantalllas Laptos */
+@media screen and (min-width: 1024px) {
+  .column--50{
+    width: 50%;
+  }
+
+  .column--50-25{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .image{
+    width: 70%;
+  }
+
+}
+/* Monitores de mesa */
+@media screen and (min-width: 1180px) {
+  .column--50{
+    width: 50%;
+    height: 50%;
+  }
+
+  .column--50-25{
+    width: 100%;
+    height: 0%;
+  }
+
+  .image{
+    width: 50%;
+  }
+
+  .container{
+    padding-top: 200px;
+  }
+}
+/* Televisores  */
+@media screen and (min-width: 1600px) {
+
+}
