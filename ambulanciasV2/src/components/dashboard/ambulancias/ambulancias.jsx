@@ -4,12 +4,13 @@ import { useEffect, useState, useRef} from 'react'
 import { useSelector} from "react-redux";
 import jwtDecode from 'jwt-decode';
 import { faArrowRight, faArrowLeft, faArrowsRotate, faPlus, faCheck, faSliders } from "@fortawesome/free-solid-svg-icons";
+import { ToastContainer, toast } from 'react-toastify';
 
 //componentes
 import BotonIcon from "../../global/botonIcon";
 import Card from "./card";
 import Map from '../map';
-import AutoCompleteInput from './autoCompleteInput';
+import AutoCompleteInput from '../../global/autoCompleteInput';
 import ModalForm from '../../global/modalForm';
 import InputForm from '../../global/inputForm';
 
@@ -18,7 +19,7 @@ import range from '../../../../public/functions/generalFunctions';
 
 //servicios
 import RambulanciasByuser, {linkAmbulancia} from '../../../services/user';
-import Cambulancia, {Dambulancia} from '../../../services/ambulancias';
+import Cambulancia, {RgpsByambulancia} from '../../../services/ambulancias';
 
 // estilos css
 import "./Ambulancias.css"
@@ -31,14 +32,17 @@ function Ambulancias() {
     const [ambulancias, sAmbulancias] = useState([""])
     const [ubicaciones, sUbicaciones] = useState([""])
     const [refreshList, sRefreshList] = useState(false)
-    
+    const [gpsArray, sGpsArray] = useState([])
+
     const [list, sList] = useState([])
 
     const token = useSelector((state) => state.login).value
     const decodeUser = jwtDecode(token).doc
 
     const asyncEffect = async() => {
-        
+
+        console.log("entre")
+        console.log(refreshList)
         const data = await (await RambulanciasByuser(decodeUser['_id'], token)).data
         
         console.log(data)
@@ -51,9 +55,13 @@ function Ambulancias() {
             const ambulanciasAux = []
             const ubicacionesAux = []
     
-            data.map((v,i) => {
+            data.map(async(v,i) => {
                 ambulanciasAux.push(v.placa)
                 ubicacionesAux.push(v.ubicacion)
+
+                const gps = await (await RgpsByambulancia(v["_id"],token)).data
+                sGpsArray(...gpsArray, gps)
+
             })
             
             sAmbulancias(ambulanciasAux)
@@ -80,15 +88,45 @@ function Ambulancias() {
  
         sModalStyle("modal-contentNClose")
         
-        const ambulancia = await (await Cambulancia(data, token)).data
-        
-        await linkAmbulancia(
-            decodeUser['_id'], 
-            ambulancia['_id'],
-            token
-        )
 
-        sRefreshList(!refreshList)
+        try{
+            
+            const ambulancia = await (await Cambulancia(data, token)).data
+            
+            await linkAmbulancia(
+                decodeUser['_id'], 
+                ambulancia['_id'],
+                token
+            )
+
+            toast.success('🚑 Ambulancia creada', {
+                position: "top-right",
+                autoClose: 1500,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "light",
+            });
+
+        }catch{
+            toast.error('❌ upsss un error', {
+                position: "top-right",
+                autoClose: 1500,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "light",
+            });
+        }
+
+        
+        console.log(refreshList)
+        sRefreshList(value => !value)
+        console.log(refreshList)
   
         childRefC.current.style.display = "none"
         sModalStyle("modal-contentN")
@@ -177,6 +215,7 @@ function Ambulancias() {
                     botonStyle    = {"refreshButton"}
                     icon          = {faArrowsRotate}
                     center        = {false}
+                    tooltip       = {"refrescar ambulancia"}
                     buttonHandler = {() => sRefreshList(!refreshList)}
                 />
 
@@ -185,6 +224,7 @@ function Ambulancias() {
                     botonStyle    = {"plusButton"}
                     icon          = {faPlus}
                     center        = {false}
+                    tooltip       = {"crear ambulancia"}
                     buttonHandler = {() => {
 
                         sUbicacionInput("")
@@ -198,9 +238,7 @@ function Ambulancias() {
 
         </div>
         
-        
         <div class="containerCardD">
-
             {
                 list.length > 4 
                     ? <BotonIcon
@@ -214,7 +252,6 @@ function Ambulancias() {
                     }}/>
                     : <></>
             }
-
 
             {
                 list.length == 0 
@@ -276,7 +313,12 @@ function Ambulancias() {
 
 
         <div class = {map}>
-            <Map/>
+            {
+                list.length > 0 
+                ?   <Map gps = {gpsArray}/>
+                : <></>
+            }
+            
         </div>
 
 
@@ -290,12 +332,8 @@ function Ambulancias() {
             modalStyle    = {modalStyle}
         />
 
-        
-        
-       
 
-
-       
+        <ToastContainer/>
     </>);
 }
 

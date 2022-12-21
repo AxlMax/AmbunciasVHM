@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
-function Map() {
+function Map(props) {
+
+    const {gps} = props
 
     const mapApi = import.meta.env.VITE_GOOGLE_API
 
@@ -36,7 +38,11 @@ function Map() {
             mapContainerStyle={mapStyles}
             zoom={11}
             center={defaultCenter}
-            />
+            >
+            {
+                gps.map((v,i) => <Marker key = {"a location"} position = {{lat: v.lat, lng: v.lon}}/>)
+            }
+            </GoogleMap>
 
         </LoadScript>
     </>;
